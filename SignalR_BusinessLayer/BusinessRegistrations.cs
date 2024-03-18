@@ -1,0 +1,27 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
+using SignalR_BusinessLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SignalR_BusinessLayer;
+
+public static class BusinessRegistrations
+{
+    public static IServiceCollection AddBusinessRegistrations(this IServiceCollection services)
+    {
+        services.AddScoped<IAboutService, AboutManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IContactService, ContactManager>();
+        services.AddScoped<IDiscountOfDayService, DiscountOfDayManager>();
+        services.AddScoped<IFeatureService, FeatureManager>();
+        services.AddScoped<IProductService, ProductManager>();
+        services.AddScoped<IReservationService, ReservationManager>();
+        services.AddScoped<ISocialMediaService, SocialMediaManager>();
+        services.AddScoped<ITestimonialService, TestimonialManager>();
+        return services;
+    }
+}
