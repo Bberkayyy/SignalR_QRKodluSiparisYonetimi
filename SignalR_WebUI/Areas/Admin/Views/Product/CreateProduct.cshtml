@@ -1,0 +1,45 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+
+<div class="container-fluid">
+    <h4 class="page-title">Ürün İşlemleri</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Ürün Ekleme Sayfası</div>
+                </div>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="name">Ürün Adı</label>
+                            <input type="text" class="form-control" asp-for="Name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Fiyatı</label>
+                            <input type="text" class="form-control" asp-for="Price" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="imageUrl">Görseli</label>
+                            <input type="text" class="form-control" asp-for="ImageUrl" id="imageUrl">
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryId">Kategorisi</label>
+                            @Html.DropDownListFor(x => x.CategoryId, (IList<SelectListItem>)ViewBag.categories, "Kategori Seçiniz", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Açıklaması</label>
+                            <input type="text" class="form-control" asp-for="Description" id="description" />
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

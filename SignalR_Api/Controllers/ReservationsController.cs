@@ -32,7 +32,7 @@ public class ReservationsController : ControllerBase
         CreatedReservationResponseDto createdReservation = _mapper.Map<CreatedReservationResponseDto>(value);
         return Created("", createdReservation);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Reservation value = _reservationService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class ReservationsController : ControllerBase
         UpdatedReservationResponseDto updatedReservation = _mapper.Map<UpdatedReservationResponseDto>(value);
         return Ok(updatedReservation);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Reservation value = _reservationService.TGetByFilter(x => x.Id == id);

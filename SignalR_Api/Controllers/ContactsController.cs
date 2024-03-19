@@ -32,7 +32,7 @@ public class ContactsController : ControllerBase
         CreatedContactResponseDto createdContact = _mapper.Map<CreatedContactResponseDto>(value);
         return Created("", createdContact);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Contact value = _contactService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class ContactsController : ControllerBase
         UpdatedContactResponseDto updatedContact = _mapper.Map<UpdatedContactResponseDto>(value);
         return Ok(updatedContact);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Contact value = _contactService.TGetByFilter(x => x.Id == id);

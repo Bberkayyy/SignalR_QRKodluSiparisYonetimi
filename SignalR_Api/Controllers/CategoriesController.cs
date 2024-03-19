@@ -32,7 +32,7 @@ public class CategoriesController : ControllerBase
         CreatedCategoryResponseDto createdCategory = _mapper.Map<CreatedCategoryResponseDto>(value);
         return Created("", createdCategory);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Category value = _categoryService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class CategoriesController : ControllerBase
         UpdatedCategoryResponseDto updatedCategory = _mapper.Map<UpdatedCategoryResponseDto>(value);
         return Ok(updatedCategory);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Category value = _categoryService.TGetByFilter(x => x.Id == id);

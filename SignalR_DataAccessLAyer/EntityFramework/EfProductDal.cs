@@ -22,4 +22,10 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
         IList<Product> products = GetAll(include: x => x.Include(x => x.Category));
         return products;
     }
+
+    public Product GetProductWithCategory(int id)
+    {
+        Product product = GetByFilter(x => x.Id == id, x => x.Include(x => x.Category));
+        return product;
+    }
 }

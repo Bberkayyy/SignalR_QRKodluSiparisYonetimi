@@ -30,6 +30,12 @@ public class ProductsController : ControllerBase
         IList<GetAllProductWithCategoryResponseDto> values = _mapper.Map<IList<GetAllProductWithCategoryResponseDto>>(_productService.TGetAllProductsWithCategories());
         return Ok(values);
     }
+    [HttpGet("getproductwithcategory/{id}")]
+    public IActionResult GetProductWithCategory(int id)
+    {
+        GetProductWithCategoryResponseDto value = _mapper.Map<GetProductWithCategoryResponseDto>(_productService.TGetProductWithCategory(id));
+        return Ok(value);
+    }
     [HttpPost]
     public IActionResult Create(CreateProductRequestDto createProductRequestDto)
     {
@@ -38,7 +44,7 @@ public class ProductsController : ControllerBase
         CreatedProductResponseDto createdProduct = _mapper.Map<CreatedProductResponseDto>(value);
         return Created("", createdProduct);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Product value = _productService.TGetByFilter(x => x.Id == id);
@@ -53,7 +59,7 @@ public class ProductsController : ControllerBase
         UpdatedProductResponseDto updatedProduct = _mapper.Map<UpdatedProductResponseDto>(value);
         return Ok(updatedProduct);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Product value = _productService.TGetByFilter(x => x.Id == id);

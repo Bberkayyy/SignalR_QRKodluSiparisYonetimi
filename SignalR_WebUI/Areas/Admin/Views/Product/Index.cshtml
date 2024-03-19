@@ -1,0 +1,56 @@
+﻿@model IList<ResultProductsWithCategoriesDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+    int count = 0;
+}
+
+<div class="container-fluid">
+    <h4 class="page-title">Ürün İşlemleri</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Ürün Listesi</div>
+            </div>
+            <div class="card-body">
+                <div class="card-sub">
+                    Ürünler ile ilgili işlemleri buradan yapabilirsiniz.
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Açıklaması</th>
+                            <th scope="col">Fiyatı</th>
+                            <th scope="col">Görseli</th>
+                            <th scope="col">Kategorisi</th>
+                            <th scope="col">Durumu</th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.name</td>
+                                <td>@item.description</td>
+                                <td>@item.price</td>
+                                <td>@item.imageUrl</td>
+                                <td>@item.categoryName</td>
+                                <td>@(item.status ? "Aktif" : "Pasif")</td>
+                                <td><a href="/Admin/Product/DeleteProduct/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                <td><a href="/Admin/Product/UpdateProduct/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/Product/CreateProduct/" class="btn btn-outline-primary">Ürün Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+

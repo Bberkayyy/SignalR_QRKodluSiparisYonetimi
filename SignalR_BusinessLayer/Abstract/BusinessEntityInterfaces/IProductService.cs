@@ -10,4 +10,5 @@ namespace SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 public interface IProductService : IGenericService<Product>
 {
     IList<Product> TGetAllProductsWithCategories();
+    Product TGetProductWithCategory(int id);
 }

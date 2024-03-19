@@ -32,7 +32,7 @@ public class SocialMediasController : ControllerBase
         CreatedSocialMediaResponseDto createdSocialMedia = _mapper.Map<CreatedSocialMediaResponseDto>(value);
         return Created("", createdSocialMedia);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         SocialMedia value = _socialMediaService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class SocialMediasController : ControllerBase
         UpdatedSocialMediaResponseDto updatedSocialMedia = _mapper.Map<UpdatedSocialMediaResponseDto>(value);
         return Ok(updatedSocialMedia);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         SocialMedia value = _socialMediaService.TGetByFilter(x => x.Id == id);

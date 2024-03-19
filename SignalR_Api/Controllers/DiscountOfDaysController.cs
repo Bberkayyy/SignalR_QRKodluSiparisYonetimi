@@ -32,7 +32,7 @@ public class DiscountOfDaysController : ControllerBase
         CreatedDiscountOfDayResponseDto createdDiscountOfDay = _mapper.Map<CreatedDiscountOfDayResponseDto>(value);
         return Created("", createdDiscountOfDay);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         DiscountOfDay value = _discountOfDayService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class DiscountOfDaysController : ControllerBase
         UpdatedDiscountOfDayResponseDto updatedDiscountOfDay = _mapper.Map<UpdatedDiscountOfDayResponseDto>(value);
         return Ok(updatedDiscountOfDay);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         DiscountOfDay value = _discountOfDayService.TGetByFilter(x => x.Id == id);

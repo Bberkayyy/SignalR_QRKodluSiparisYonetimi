@@ -32,7 +32,7 @@ public class AboutsController : ControllerBase
         CreatedAboutResponseDto createdAbout = _mapper.Map<CreatedAboutResponseDto>(value);
         return Created("", createdAbout);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         About value = _aboutService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class AboutsController : ControllerBase
         UpdatedAboutResponseDto updatedAbout = _mapper.Map<UpdatedAboutResponseDto>(value);
         return Ok(updatedAbout);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         About value = _aboutService.TGetByFilter(x => x.Id == id);

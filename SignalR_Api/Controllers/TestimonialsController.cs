@@ -32,7 +32,7 @@ public class TestimonialsController : ControllerBase
         CreatedTestimonialResponseDto createdTestimonial = _mapper.Map<CreatedTestimonialResponseDto>(value);
         return Created("", createdTestimonial);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Testimonial value = _testimonialService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class TestimonialsController : ControllerBase
         UpdatedTestimonialResponseDto updatedTestimonial = _mapper.Map<UpdatedTestimonialResponseDto>(value);
         return Ok(updatedTestimonial);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Testimonial value = _testimonialService.TGetByFilter(x => x.Id == id);

@@ -32,7 +32,7 @@ public class FeaturesController : ControllerBase
         CreatedFeatureResponseDto createdFeature = _mapper.Map<CreatedFeatureResponseDto>(value);
         return Created("", createdFeature);
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         Feature value = _featureService.TGetByFilter(x => x.Id == id);
@@ -47,7 +47,7 @@ public class FeaturesController : ControllerBase
         UpdatedFeatureResponseDto updatedFeature = _mapper.Map<UpdatedFeatureResponseDto>(value);
         return Ok(updatedFeature);
     }
-    [HttpGet("getbyid")]
+    [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
         Feature value = _featureService.TGetByFilter(x => x.Id == id);

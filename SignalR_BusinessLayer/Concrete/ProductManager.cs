@@ -16,6 +16,11 @@ public class ProductManager : GenericManager<Product, IProductDal>, IProductServ
     {
     }
 
+    public Product TGetProductWithCategory(int id)
+    {
+        return _entityDal.GetProductWithCategory(id);
+    }
+
     public IList<Product> TGetAllProductsWithCategories()
     {
         return _entityDal.GetAllProductsWithCategories();

@@ -1,0 +1,48 @@
+﻿@model IList<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+    int count = 0;
+}
+<div class="container-fluid">
+    <h4 class="page-title">Hakkımızda İşlemleri</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Hakkımızda Listesi</div>
+            </div>
+            <div class="card-body">
+                <div class="card-sub">
+                    Hakkımızda alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 1 tane hakkımızda bilgisi bulunmalıdır.
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Başlık</th>
+                            <th scope="col">Resim</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.title</td>
+                                <td>@item.imageUrl</td>
+                                <td>@item.description</td>
+                                <td><a href="/Admin/About/DeleteAbout/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                <td><a href="/Admin/About/UpdateAbout/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/About/CreateAbout/" class="btn btn-outline-primary">Hakkımızda Bilgisi Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>

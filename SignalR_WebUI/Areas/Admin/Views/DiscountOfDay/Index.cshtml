@@ -1,0 +1,48 @@
+﻿@model IList<ResultDiscountOfDayDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+<div class="container-fluid">
+    <h4 class="page-title">Günün Ürünü İşlemleri</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Günün Ürünü Listesi</div>
+            </div>
+            <div class="card-body">
+                <div class="card-sub">
+                    Günün ürünü ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 2 tane günün ürünü bilgisi bulunmalıdır.
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">İndirim Oranı</th>
+                            <th scope="col">Durumu</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.imageUrl</td>
+                                <td>@item.title</td>
+                                <td>@item.amount</td>
+                                <td>Aktif/Pasif Butonu</td>
+                                <td>@item.description</td>
+                                <td><a href="/Admin/DiscountOfDay/DeleteDiscountOfDay/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                <td><a href="/Admin/DiscountOfDay/UpdateDiscountOfDay/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Admin/DiscountOfDay/CreateDiscountOfDay/" class="btn btn-outline-primary">Günün Ürünü Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
