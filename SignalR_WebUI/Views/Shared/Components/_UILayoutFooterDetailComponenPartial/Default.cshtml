@@ -1,0 +1,10 @@
+﻿@model IList<ResultFooterInfoDto>
+@foreach (var item in Model)
+{
+    <a href="" class="footer-logo">
+        @item.title
+    </a>
+    <p>
+        @item.description
+    </p>
+}

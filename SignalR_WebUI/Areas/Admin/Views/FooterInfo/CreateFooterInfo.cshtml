@@ -1,0 +1,35 @@
+﻿@model CreateFooterInfoDto
+@{
+    ViewData["Title"] = "CreateFooterInfo";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+
+
+<div class="container-fluid">
+    <h4 class="page-title">Alt Bilgi İşlemleri</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Alt Bilgi Ekleme Sayfası</div>
+                </div>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="title">Başlık</label>
+                            <input type="text" class="form-control" asp-for="Title" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Açıklama</label>
+                            <textarea rows="5" class="form-control" asp-for="Description" id="description"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

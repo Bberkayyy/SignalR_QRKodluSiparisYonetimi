@@ -6,5 +6,4 @@ public class ResultContactDto
     public string location { get; set; }
     public string phone { get; set; }
     public string mail { get; set; }
-    public string footerDescription { get; set; }
 }

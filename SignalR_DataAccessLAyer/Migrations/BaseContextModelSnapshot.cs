@@ -75,10 +75,6 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FooterDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -160,6 +156,27 @@ namespace SignalR_DataAccessLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Features");
+                });
+
+            modelBuilder.Entity("SignalR_EntityLayer.Entities.FooterInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FooterInfos");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.MoneyCase", b =>
