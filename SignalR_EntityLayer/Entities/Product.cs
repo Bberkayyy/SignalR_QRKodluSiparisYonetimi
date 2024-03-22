@@ -9,4 +9,5 @@ public class Product
     public bool Status { get; set; }
     public int CategoryId { get; set; }
     public Category Category { get; set; }
+    public IList<OrderDetail> OrderDetails { get; set; }
 }

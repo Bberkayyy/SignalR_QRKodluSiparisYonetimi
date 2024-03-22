@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
+using SignalR_BusinessLayer.Abstract.BusinessInterfaces;
 using SignalR_BusinessLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ public static class BusinessRegistrations
         services.AddScoped<IReservationService, ReservationManager>();
         services.AddScoped<ISocialMediaService, SocialMediaManager>();
         services.AddScoped<ITestimonialService, TestimonialManager>();
+        services.AddScoped<IOrderService, OrderManager>();
+        services.AddScoped<IOrderDetailService, OrderDetailManager>();
+        services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
+
+        services.AddScoped<IStatisticService, StatisticManager>();
         return services;
     }
 }

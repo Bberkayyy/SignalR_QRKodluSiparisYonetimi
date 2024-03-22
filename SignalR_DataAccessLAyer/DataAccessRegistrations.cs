@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SignalR_DataAccessLayer.Abstract.EntityInterfaces;
+using SignalR_DataAccessLayer.Abstract.Interfaces;
 using SignalR_DataAccessLayer.Concrete;
 using SignalR_DataAccessLayer.EntityFramework;
+using SignalR_DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,11 @@ public static class DataAccessRegistrations
         services.AddScoped<IReservationDal, EfReservationDal>();
         services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
         services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+        services.AddScoped<IOrderDal, EfOrderDal>();
+        services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
+        services.AddScoped<IRestaurantTableDal, EfRestaurantTableDal>();
+
+        services.AddScoped<IStatisticDal, StatisticDal>();
         return services;
     }
 }
