@@ -1,16 +1,24 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.SignalR;
+using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 using SignalR_BusinessLayer.Abstract.BusinessInterfaces;
 using SignalR_DataAccessLayer.Concrete;
+using SignalR_DtoLayer.ReservationDtos;
+using SignalR_EntityLayer.Entities;
 
 namespace SignalR_Api.Hubs;
 
 public class SignalRHub : Hub
 {
     private readonly IStatisticService _statisticService;
+    private readonly IReservationService _reservationService;
+    private readonly IMapper _mapper;
 
-    public SignalRHub(IStatisticService statisticService)
+    public SignalRHub(IStatisticService statisticService, IReservationService reservationService, IMapper mapper)
     {
         _statisticService = statisticService;
+        _reservationService = reservationService;
+        _mapper = mapper;
     }
 
     public async Task SendStatistics()
@@ -67,5 +75,10 @@ public class SignalRHub : Hub
 
         var restaurantTableCount = _statisticService.TGetRestaurantTableCount();
         await Clients.All.SendAsync("receiveRestaurantTableCount", restaurantTableCount);
+    }
+    public async Task GetReservationList()
+    {
+        IList<GetAllReservationResponseDto> values = _mapper.Map<IList<GetAllReservationResponseDto>>(_reservationService.TGetAll());
+        await Clients.All.SendAsync("receiveResevationList", values);
     }
 }

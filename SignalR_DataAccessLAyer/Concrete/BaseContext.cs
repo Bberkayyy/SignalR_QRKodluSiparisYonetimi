@@ -9,6 +9,10 @@ public class BaseContext : DbContext
     {
         optionsBuilder.UseSqlServer("server =(localdb)\\MSSQLLocalDB ; initial catalog = SignalRDb ; integrated Security = true");
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Cart>().ToTable(opt => opt.HasTrigger("UpdateCartTotalAmount"));
+    }
     public DbSet<About> Abouts { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Contact> Contacts { get; set; }
@@ -23,4 +27,5 @@ public class BaseContext : DbContext
     public DbSet<MoneyCase> MoneyCases { get; set; }
     public DbSet<RestaurantTable> RestaurantTables { get; set; }
     public DbSet<FooterInfo> FooterInfos { get; set; }
+    public DbSet<Cart> Carts { get; set; }
 }

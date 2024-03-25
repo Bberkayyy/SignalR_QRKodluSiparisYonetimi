@@ -10,4 +10,5 @@ public class Product
     public int CategoryId { get; set; }
     public Category Category { get; set; }
     public IList<OrderDetail> OrderDetails { get; set; }
+    public IList<Cart> Carts { get; set; }
 }

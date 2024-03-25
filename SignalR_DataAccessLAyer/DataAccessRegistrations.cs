@@ -31,6 +31,7 @@ public static class DataAccessRegistrations
         services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
         services.AddScoped<IRestaurantTableDal, EfRestaurantTableDal>();
         services.AddScoped<IFooterInfoDal, EfFooterInfoDal>();
+        services.AddScoped<ICartDal, EfCartDal>();
 
         services.AddScoped<IStatisticDal, StatisticDal>();
         return services;
