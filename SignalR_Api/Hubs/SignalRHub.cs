@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.SignalR;
 using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 using SignalR_BusinessLayer.Abstract.BusinessInterfaces;
 using SignalR_DataAccessLayer.Concrete;
+using SignalR_DtoLayer.NotificationDtos;
 using SignalR_DtoLayer.ReservationDtos;
+using SignalR_DtoLayer.RestaurantTableDtos;
 using SignalR_EntityLayer.Entities;
 
 namespace SignalR_Api.Hubs;
@@ -12,14 +14,20 @@ public class SignalRHub : Hub
 {
     private readonly IStatisticService _statisticService;
     private readonly IReservationService _reservationService;
+    private readonly INotificationService _notificationService;
+    private readonly IRestaurantTableService _restaurantTableService;
     private readonly IMapper _mapper;
 
-    public SignalRHub(IStatisticService statisticService, IReservationService reservationService, IMapper mapper)
+    public SignalRHub(IStatisticService statisticService, IReservationService reservationService, IMapper mapper, INotificationService notificationService, IRestaurantTableService restaurantTableService)
     {
         _statisticService = statisticService;
         _reservationService = reservationService;
         _mapper = mapper;
+        _notificationService = notificationService;
+        _restaurantTableService = restaurantTableService;
     }
+
+    public static int clientCount { get; set; }
 
     public async Task SendStatistics()
     {
@@ -80,5 +88,34 @@ public class SignalRHub : Hub
     {
         IList<GetAllReservationResponseDto> values = _mapper.Map<IList<GetAllReservationResponseDto>>(_reservationService.TGetAll());
         await Clients.All.SendAsync("receiveResevationList", values);
+    }
+    public async Task SendNotification()
+    {
+        int value = _notificationService.TGetNotificationCountByStatusFalse();
+        await Clients.All.SendAsync("receiveNotificationCountByStatusFalse", value);
+
+        IList<GetAllNotificationByStatusFalseResponseDto> values = _mapper.Map<IList<GetAllNotificationByStatusFalseResponseDto>>(_notificationService.TGetAllNotificationByStatusFalse());
+        await Clients.All.SendAsync("receiveNotificationListByStatusFalse", values);
+    }
+    public async Task GetRestaurantTableStatus()
+    {
+        IList<GetAllRestaurantTableResponseDto> values = _mapper.Map<IList<GetAllRestaurantTableResponseDto>>(_restaurantTableService.TGetAll());
+        await Clients.All.SendAsync("receiveRestaurantTableStatus", values);
+    }
+    public async Task SendMessage(string user, string message)
+    {
+        await Clients.All.SendAsync("receiveMessage", user, message);
+    }
+    public override async Task OnConnectedAsync()
+    {
+        clientCount++;
+        await Clients.All.SendAsync("receiveClientCount", clientCount);
+        await base.OnConnectedAsync();
+    }
+    public override async Task OnDisconnectedAsync(Exception? exception)
+    {
+        clientCount--;
+        await Clients.All.SendAsync("receiveClientCount", clientCount);
+        await base.OnDisconnectedAsync(exception);
     }
 }

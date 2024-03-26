@@ -12,6 +12,10 @@ public class BaseContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Cart>().ToTable(opt => opt.HasTrigger("UpdateCartTotalAmount"));
+        modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("SumMoneyCases"));
+        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("DecreaseOrderTotalPrice"));
+        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("IncreaseOrderTotalPrice"));
+        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("UpdateOrderDetailsTotalPrice"));
     }
     public DbSet<About> Abouts { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -28,4 +32,5 @@ public class BaseContext : DbContext
     public DbSet<RestaurantTable> RestaurantTables { get; set; }
     public DbSet<FooterInfo> FooterInfos { get; set; }
     public DbSet<Cart> Carts { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
 }

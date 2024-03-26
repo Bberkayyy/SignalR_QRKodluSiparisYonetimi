@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SignalR_DataAccessLayer.Concrete;
 
@@ -11,9 +12,11 @@ using SignalR_DataAccessLayer.Concrete;
 namespace SignalR_DataAccessLayer.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    partial class BaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240326090624_add_notification_entity")]
+    partial class add_notification_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

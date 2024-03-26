@@ -9,5 +9,5 @@ namespace SignalR_DtoLayer.RestaurantTableDtos;
 public class CreateRestaurantTableRequestDto
 {
     public string Name { get; set; }
-    public bool Status { get; set; }
+    public bool Status = false;
 }
