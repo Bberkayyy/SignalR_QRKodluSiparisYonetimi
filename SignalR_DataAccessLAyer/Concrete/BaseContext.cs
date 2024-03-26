@@ -1,22 +1,36 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SignalR_EntityLayer.Entities;
 
 namespace SignalR_DataAccessLayer.Concrete;
 
-public class BaseContext : DbContext
+public class BaseContext : IdentityDbContext<AppUser, AppRole, int>
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("server =(localdb)\\MSSQLLocalDB ; initial catalog = SignalRDb ; integrated Security = true");
     }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Cart>().ToTable(opt => opt.HasTrigger("UpdateCartTotalAmount"));
-        modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("SumMoneyCases"));
-        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("DecreaseOrderTotalPrice"));
-        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("IncreaseOrderTotalPrice"));
-        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("UpdateOrderDetailsTotalPrice"));
-    }
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.Entity<IdentityUserLogin<int>>(entity =>
+    //    {
+    //        entity.HasKey(e => e.UserId);
+    //    });
+    //    modelBuilder.Entity<IdentityUserRole<int>>(entity =>
+    //    {
+    //        entity.HasKey(e => new { e.UserId, e.RoleId });
+    //    });
+    //    modelBuilder.Entity<IdentityUserToken<int>>(entity =>
+    //    {
+    //        entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+    //    });
+    //    modelBuilder.Entity<Cart>().ToTable(opt => opt.HasTrigger("UpdateCartTotalAmount"));
+    //    modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("SumMoneyCases"));
+    //    modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("DecreaseOrderTotalPrice"));
+    //    modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("IncreaseOrderTotalPrice"));
+    //    modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("UpdateOrderDetailsTotalPrice"));
+    //}
     public DbSet<About> Abouts { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Contact> Contacts { get; set; }
