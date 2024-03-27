@@ -14,4 +14,19 @@ public class DiscountOfDayManager : GenericManager<DiscountOfDay, IDiscountOfDay
     public DiscountOfDayManager(IDiscountOfDayDal entityDal) : base(entityDal)
     {
     }
+
+    public void TChangeStatusToFalse(int id)
+    {
+        _entityDal.ChangeStatusToFalse(id);
+    }
+
+    public void TChangeStatusToTrue(int id)
+    {
+        _entityDal.ChangeStatusToTrue(id);
+    }
+
+    public IList<DiscountOfDay> TGetListByStatusTrue()
+    {
+        return _entityDal.GetListByStatusTrue();
+    }
 }

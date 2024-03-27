@@ -79,4 +79,20 @@ public class DiscountOfDayController : Controller
             return RedirectToAction("Index", "DiscountOfDay", new { area = "Admin" });
         return View();
     }
+    [HttpGet]
+    [Route("statustofalse/{id}")]
+    public async Task<IActionResult> ChangeStatusToFalse(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/DiscountOfDays/statustofalse?id=" + id);
+        return RedirectToAction("Index", "DiscountOfDay", new { area = "Admin" });
+    }
+    [HttpGet]
+    [Route("statustotrue/{id}")]
+    public async Task<IActionResult> ChangeStatusToTrue(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/DiscountOfDays/statustotrue?id=" + id);
+        return RedirectToAction("Index", "DiscountOfDay", new { area = "Admin" });
+    }
 }

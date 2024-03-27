@@ -15,4 +15,24 @@ public class EfDiscountOfDayDal : GenericRepository<DiscountOfDay>, IDiscountOfD
     public EfDiscountOfDayDal(BaseContext context) : base(context)
     {
     }
+
+    public void ChangeStatusToFalse(int id)
+    {
+        DiscountOfDay value = GetByFilter(x => x.Id == id);
+        value.Status = false;
+        _context.SaveChanges();
+    }
+
+    public void ChangeStatusToTrue(int id)
+    {
+        DiscountOfDay value = GetByFilter(x => x.Id == id);
+        value.Status = true;
+        _context.SaveChanges();
+    }
+
+    public IList<DiscountOfDay> GetListByStatusTrue()
+    {
+        IList<DiscountOfDay> values = GetAll(x => x.Status == true);
+        return values;
+    }
 }

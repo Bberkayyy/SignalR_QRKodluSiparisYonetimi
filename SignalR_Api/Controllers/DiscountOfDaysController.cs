@@ -24,6 +24,12 @@ public class DiscountOfDaysController : ControllerBase
         IList<GetAllDiscountOfDayResponseDto> values = _mapper.Map<IList<GetAllDiscountOfDayResponseDto>>(_discountOfDayService.TGetAll());
         return Ok(values);
     }
+    [HttpGet("getallbystatustrue")]
+    public IActionResult GetListByStatusTrue()
+    {
+        IList<GetAllDiscountOfDayResponseDto> values = _mapper.Map<IList<GetAllDiscountOfDayResponseDto>>(_discountOfDayService.TGetListByStatusTrue());
+        return Ok(values);
+    }
     [HttpPost]
     public IActionResult Create(CreateDiscountOfDayRequestDto createDiscountOfDayRequestDto)
     {
@@ -53,5 +59,17 @@ public class DiscountOfDaysController : ControllerBase
         DiscountOfDay value = _discountOfDayService.TGetByFilter(x => x.Id == id);
         GetDiscountOfDayResponseDto getDiscountOfDay = _mapper.Map<GetDiscountOfDayResponseDto>(value);
         return Ok(getDiscountOfDay);
+    }
+    [HttpGet("statustofalse")]
+    public IActionResult ChangeStatusToFalse(int id)
+    {
+        _discountOfDayService.TChangeStatusToFalse(id);
+        return Ok("Günün fırsatlarından çıkarıldı.");
+    }
+    [HttpGet("statustotrue")]
+    public IActionResult ChangeStatusToTrue(int id)
+    {
+        _discountOfDayService.TChangeStatusToTrue(id);
+        return Ok("Günün fırsatlarına eklendi.");
     }
 }

@@ -14,6 +14,7 @@
                 </div>
                 <form method="post">
                     <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Description" />
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Rezervasyon Adı</label>
@@ -33,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="date">Tarihi</label>
-                            <input type="datetime" class="form-control" asp-for="Date" id="date">
+                            <input type="date" class="form-control" asp-for="Date" id="date">
                         </div>
                     </div>
                     <div class="card-action">

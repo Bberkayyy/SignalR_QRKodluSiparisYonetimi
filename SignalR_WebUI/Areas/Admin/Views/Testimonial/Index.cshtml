@@ -5,20 +5,20 @@
 }
 
 <div class="container-fluid">
-    <h4 class="page-title">Müşteri Yorumu İşlemleri</h4>
+    <h4 class="page-title">Referans İşlemleri</h4>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Müşteri Yorumu Listesi</div>
+                <div class="card-title">Referanslarımızın Listesi</div>
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Müşteri yorumları ile ilgili işlemleri buradan yapabilirsiniz.
+                    Müşterilerimizin yorumları ile ilgili işlemleri buradan yapabilirsiniz.
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col"></th>
                             <th scope="col">Müşteri Adı</th>
                             <th scope="col">Ünvanı</th>
                             <th scope="col">Yorum</th>
@@ -31,11 +31,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.imageUrl</td>
+                                <td>#</td>
+                                <td><img class="img-fluid" style="height:60px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
                                 <td>@item.name</td>
                                 <td>@item.title</td>
                                 <td>@item.comment</td>
-                                <td>@item.status</td>
+                                <td>@(item.status ? "Yayında" : "Yayında Değil")</td>
                                 <td><a href="/Admin/Testimonial/DeleteTestimonial/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
                                 <td><a href="/Admin/Testimonial/UpdateTestimonial/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
                             </tr>

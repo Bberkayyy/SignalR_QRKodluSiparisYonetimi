@@ -54,4 +54,16 @@ public class ReservationsController : ControllerBase
         GetReservationResponseDto getReservation = _mapper.Map<GetReservationResponseDto>(value);
         return Ok(getReservation);
     }
+    [HttpGet("approved")]
+    public IActionResult ReservationStatusApproved(int id)
+    {
+        _reservationService.TReservationStatusApproved(id);
+        return Ok("Rezervasyon onaylandı.");
+    }
+    [HttpGet("cancelled")]
+    public IActionResult ReservationStatusCancelled(int id)
+    {
+        _reservationService.TReservationStatusCancelled(id);
+        return Ok("Rezervasyon iptal edildi.");
+    }
 }

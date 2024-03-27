@@ -35,11 +35,11 @@
                         {
                             count++;
                             <tr>
-                                <td>@count</td>
+                                <th>@count</th>
                                 <td>@item.name</td>
                                 <td>@item.description</td>
                                 <td>@item.price</td>
-                                <td>@item.imageUrl</td>
+                                <td><img class="img-fluid" style="height:50px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
                                 <td>@item.categoryName</td>
                                 <td>@(item.status ? "Aktif" : "Pasif")</td>
                                 <td><a href="/Admin/Product/DeleteProduct/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>

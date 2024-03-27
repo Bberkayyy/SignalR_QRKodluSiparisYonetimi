@@ -9,4 +9,7 @@ namespace SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 
 public interface IDiscountOfDayService : IGenericService<DiscountOfDay>
 {
+    void TChangeStatusToTrue(int id);
+    void TChangeStatusToFalse(int id); 
+    IList<DiscountOfDay> TGetListByStatusTrue();
 }

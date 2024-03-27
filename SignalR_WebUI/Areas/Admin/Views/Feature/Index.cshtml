@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
-    int count = 0;
 }
 
 <div class="container-fluid">
@@ -14,12 +13,11 @@
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Öne çıkan alan ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 1 tane öne çıkan alan bilgisi bulunmalıdır.
+                    Öne çıkan alan ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> öne çıkan alan bilgisi bulunmalıdır.
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Başlık 1</th>
                             <th scope="col">Başlık 2</th>
                             <th scope="col">Başlık 3</th>
@@ -33,9 +31,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            count++;
                             <tr>
-                                <td>@count</td>
                                 <td>@item.title1</td>
                                 <td>@item.title2</td>
                                 <td>@item.title3</td>

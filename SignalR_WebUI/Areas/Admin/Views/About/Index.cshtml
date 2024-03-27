@@ -13,12 +13,11 @@
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Hakkımızda alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 1 tane hakkımızda bilgisi bulunmalıdır.
+                    Hakkımızda alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong>hakkımızda bilgisi bulunmalıdır.
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Başlık</th>
                             <th scope="col">Resim</th>
                             <th scope="col">Açıklama</th>
@@ -31,9 +30,8 @@
                         {
                             count++;
                             <tr>
-                                <td>@count</td>
                                 <td>@item.title</td>
-                                <td>@item.imageUrl</td>
+                                <td><img class="img-fluid" style="height:50px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
                                 <td>@item.description</td>
                                 <td><a href="/Admin/About/DeleteAbout/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
                                 <td><a href="/Admin/About/UpdateAbout/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>

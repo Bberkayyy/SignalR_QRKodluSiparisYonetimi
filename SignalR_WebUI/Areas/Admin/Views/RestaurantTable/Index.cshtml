@@ -10,11 +10,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Masaların Listesi</div>
+                <div class="card-title">Masa Listesi</div>
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Masalar ile ilgili işlemleri buradan yapabilirsiniz.
+                    Restorandaki masalar ile ilgili işlemleri buradan yapabilirsiniz.
                 </div>
                 <table class="table mt-3">
                     <thead>
@@ -31,7 +31,7 @@
                         {
                             count++;
                             <tr>
-                                <td>@count</td>
+                                <th>@count</th>
                                 <td>@item.name</td>
                                 <td>@(item.status ? "Dolu" : "Boş")</td>
                                 <td><a href="/Admin/RestaurantTable/DeleteRestaurantTable/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
@@ -40,7 +40,7 @@
                         }
                     </tbody>
                 </table>
-                <a href="/Admin/RestaurantTable/CreateRestaurantTable/" class="btn btn-outline-primary">Hakkımızda Bilgisi Ekle</a>
+                <a href="/Admin/RestaurantTable/CreateRestaurantTable/" class="btn btn-outline-primary">Masa Ekle</a>
             </div>
         </div>
     </div>

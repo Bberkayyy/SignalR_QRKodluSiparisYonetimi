@@ -9,4 +9,6 @@ namespace SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 
 public interface IReservationService : IGenericService<Reservation>
 {
+    void TReservationStatusApproved(int id);
+    void TReservationStatusCancelled(int id);
 }

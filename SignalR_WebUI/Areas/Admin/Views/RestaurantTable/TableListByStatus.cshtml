@@ -19,7 +19,7 @@
             connection.on("receiveRestaurantTableStatus", (value) => {
                 let tableStatus = value.map(item => {
                     return `<div class="col-md-3" >
-                                    <div class="card card-stats ${item.status ? "card-warning" : "card-success"}">
+                                    <div class="card card-stats ${item.status ? "card-danger" : "card-success"}">
                                     <div class="card-body ">
                                         <div class="row">
                                             <div class="col-5">

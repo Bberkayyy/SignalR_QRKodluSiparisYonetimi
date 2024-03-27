@@ -36,20 +36,24 @@
                                          <th scope="col">Durumu</th>
                                          <th scope="col">Sil</th>
                                          <th scope="col">Güncelle</th>
+                                         <th scope="col">Onayla</th>
+                                         <th scope="col">İptal Et</th>
                                      </tr>
                                  </thead>
                                  <tbody>`
                 $.each(value, (index, item) => {
                     tablehtml += `<tr>
-                                 <td>${index+1}</td>
+                                 <th>${index+1}</th>
                                  <td>${item.name}</td>
                                  <td>${item.phone}</td>
                                  <td>${item.mail}</td>
                                  <td>${item.personCount}</td>
                                  <td>${formatDate(item.date)}</td>
-                                 <td>${"Rezervasyon durumu"}</td>
+                                 <td>${item.description}</td>
                                  <td><a href="/Admin/Reservation/DeleteReservation/${item.id}" class="btn btn-outline-danger btn-round">Sil</a></td>
                                  <td><a href="/Admin/Reservation/UpdateReservation/${item.id}" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                 <td><a href="/Admin/Reservation/approved/${item.id}" class="btn btn-outline-info btn-round">Onayla</a></td>
+                                 <td><a href="/Admin/Reservation/cancelled/${item.id}" class="btn btn-outline-dark btn-round">İptal Et</a></td>
                                  </tr>`
                 });
                 tablehtml += "</tbody></table>";

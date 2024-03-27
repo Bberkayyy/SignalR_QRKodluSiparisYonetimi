@@ -4,6 +4,7 @@ public class ResultReservationDto
 {
     public int id { get; set; }
     public string name { get; set; }
+    public string description { get; set; }
     public string phone { get; set; }
     public string mail { get; set; }
     public int personCount { get; set; }

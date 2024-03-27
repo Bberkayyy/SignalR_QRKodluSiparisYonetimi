@@ -34,19 +34,19 @@
                         {
                             count++;
                             <tr>
-                                <td>@count</td>
+                                <th>@count</th>
                                 <td>@item.description</td>
                                 <td>@item.date.ToString("dd MMM yyyy HH:mm")</td>
                                 <td>@(item.status ? "Okundu" : "Okunmadı")</td>
                                 <td><a href="/Admin/Notification/DeleteNotification/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
                                 <td><a href="/Admin/Notification/UpdateNotification/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
-                                <td><a href="/Admin/Notification/ChangeStatusToTrue/@item.id" class="btn btn-outline-secondary btn-round">Okundu Yap</a></td>
-                                <td><a href="/Admin/Notification/ChangeStatusToFalse/@item.id" class="btn btn-outline-secondary btn-round">Okunmadı Yap</a></td>
+                                <td><a href="/Admin/Notification/ChangeStatusToTrue/@item.id" class="btn btn-outline-info btn-round">Okundu Yap</a></td>
+                                <td><a href="/Admin/Notification/ChangeStatusToFalse/@item.id" class="btn btn-outline-dark btn-round">Okunmadı Yap</a></td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <a href="/Admin/Notification/CreateNotification/" class="btn btn-outline-primary">Yeni Bildirim Ekle</a>
+                <a href="/Admin/Notification/CreateNotification/" class="btn btn-outline-primary">Bildirim Ekle</a>
             </div>
         </div>
     </div>

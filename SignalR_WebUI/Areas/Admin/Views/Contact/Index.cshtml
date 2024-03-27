@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
-    int count = 0;
 }
 <div class="container-fluid">
     <h4 class="page-title">Ana Sayfa İletişim İşlemleri</h4>
@@ -13,12 +12,11 @@
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    İletişim ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 1 tane iletişim bilgisi bulunmalıdır.
+                    İletişim ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> iletişim bilgisi bulunmalıdır.
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Konum</th>
                             <th scope="col">Telefon</th>
                             <th scope="col">Email</th>
@@ -29,9 +27,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            count++;
                             <tr>
-                                <td>@count</td>
                                 <td>@item.location</td>
                                 <td>@item.phone</td>
                                 <td>@item.mail</td>

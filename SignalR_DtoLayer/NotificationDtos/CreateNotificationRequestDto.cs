@@ -11,6 +11,6 @@ public class CreateNotificationRequestDto
     public string Type { get; set; }
     public string Icon { get; set; }
     public string Description { get; set; }
-    public DateTime Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+    public DateTime Date = DateTime.Now;
     public bool Status = false;
 }

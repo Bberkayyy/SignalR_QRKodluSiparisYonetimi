@@ -14,4 +14,14 @@ public class ReservationManager : GenericManager<Reservation, IReservationDal>, 
     public ReservationManager(IReservationDal entityDal) : base(entityDal)
     {
     }
+
+    public void TReservationStatusApproved(int id)
+    {
+        _entityDal.ReservationStatusApproved(id);
+    }
+
+    public void TReservationStatusCancelled(int id)
+    {
+        _entityDal.ReservationStatusCancelled(id);
+    }
 }

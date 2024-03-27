@@ -78,4 +78,20 @@ public class ReservationController : Controller
             return RedirectToAction("Index", "Reservation", new { area = "Admin" });
         return View();
     }
+    [HttpGet]
+    [Route("approved/{id}")]
+    public async Task<IActionResult> ReservationStatusApproved(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/Reservations/approved?id=" + id);
+        return RedirectToAction("Index", "Reservation", new { area = "Admin" });
+    }
+    [HttpGet]
+    [Route("cancelled/{id}")]
+    public async Task<IActionResult> ReservationStatusCancelled(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/Reservations/cancelled?id=" + id);
+        return RedirectToAction("Index", "Reservation", new { area = "Admin" });
+    }
 }

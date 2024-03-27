@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
-    int count = 0;
 }
 <div class="container-fluid">
     <h4 class="page-title">Alt Bilgi İşlemleri</h4>
@@ -13,12 +12,11 @@
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Alt bilgi alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece 1 tane alt bilgi bulunmalıdır.
+                    Alt bilgi alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> alt bilgi bulunmalıdır.
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Başlık</th>
                             <th scope="col">Açıklama</th>
                             <th scope="col">Sil</th>
@@ -28,9 +26,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            count++;
                             <tr>
-                                <td>@count</td>
                                 <td>@item.title</td>
                                 <td>@item.description</td>
                                 <td><a href="/Admin/FooterInfo/DeleteFooterInfo/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
