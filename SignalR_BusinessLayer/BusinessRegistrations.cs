@@ -29,6 +29,7 @@ public static class BusinessRegistrations
         services.AddScoped<IFooterInfoService, FooterInfoManager>();
         services.AddScoped<ICartService, CartManager>();
         services.AddScoped<INotificationService, NotificationManager>();
+        services.AddScoped<IMessageService, MessageManager>();
 
         services.AddScoped<IStatisticService, StatisticManager>();
         return services;

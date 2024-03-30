@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SignalR_DataAccessLayer.Concrete;
 
@@ -11,9 +12,11 @@ using SignalR_DataAccessLayer.Concrete;
 namespace SignalR_DataAccessLayer.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    partial class BaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240328075623_add_message_entity")]
+    partial class add_message_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,7 +150,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Abouts", (string)null);
+                    b.ToTable("Abouts");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.AppRole", b =>
@@ -282,7 +285,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasIndex("RestaurantTableId");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Category", b =>
@@ -302,7 +305,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Contact", b =>
@@ -327,7 +330,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.DiscountOfDay", b =>
@@ -359,7 +362,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DiscountOfDays", (string)null);
+                    b.ToTable("DiscountOfDays");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Feature", b =>
@@ -396,7 +399,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Features", (string)null);
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.FooterInfo", b =>
@@ -417,7 +420,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FooterInfos", (string)null);
+                    b.ToTable("FooterInfos");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Message", b =>
@@ -456,7 +459,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.MoneyCase", b =>
@@ -472,7 +475,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MoneyCases", (string)null);
+                    b.ToTable("MoneyCases");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Notification", b =>
@@ -503,7 +506,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notifications", (string)null);
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Order", b =>
@@ -533,7 +536,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.OrderDetail", b =>
@@ -565,7 +568,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Product", b =>
@@ -601,7 +604,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Reservation", b =>
@@ -636,7 +639,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.RestaurantTable", b =>
@@ -656,7 +659,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RestaurantTables", (string)null);
+                    b.ToTable("RestaurantTables");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.SocialMedia", b =>
@@ -681,7 +684,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SocialMedias", (string)null);
+                    b.ToTable("SocialMedias");
                 });
 
             modelBuilder.Entity("SignalR_EntityLayer.Entities.Testimonial", b =>
@@ -713,7 +716,7 @@ namespace SignalR_DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Testimonials", (string)null);
+                    b.ToTable("Testimonials");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

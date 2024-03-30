@@ -33,6 +33,7 @@ public static class DataAccessRegistrations
         services.AddScoped<IFooterInfoDal, EfFooterInfoDal>();
         services.AddScoped<ICartDal, EfCartDal>();
         services.AddScoped<INotificationDal, EfNotificationDal>();
+        services.AddScoped<IMessageDal, EfMessageDal>();
 
         services.AddScoped<IStatisticDal, StatisticDal>();
         return services;
