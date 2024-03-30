@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+<div class="container-fluid">
+    <h4 class="page-title">QR Kod Oluşturma Sayfası</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">QR Kod Oluştur</div>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    @Html.DropDownList("value", (IList<SelectListItem>)ViewBag.restaurantTables, "Masa Seçiniz", new { @class = "form-control" })
+                    <br />
+                    <input type="submit" value="Oluştur" class="btn btn-primary" />
+                </form>
+                <br />
+                @if (ViewBag.qrImage is not null)
+                {
+                    <img src="@ViewBag.qrImage" style="width:400px;height:400ox" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

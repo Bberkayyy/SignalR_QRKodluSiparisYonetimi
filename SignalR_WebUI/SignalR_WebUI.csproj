@@ -30,4 +30,10 @@
     <ProjectReference Include="..\SignalR_DataAccessLAyer\SignalR_DataAccessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="QRCoder">
+      <HintPath>..\..\QRCoder.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
