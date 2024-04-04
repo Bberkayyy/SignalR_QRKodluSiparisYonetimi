@@ -86,4 +86,9 @@ public class StatisticManager : IStatisticService
     {
         return _statisticDal.GetRestaurantTableCount();
     }
+
+    public int TGetActiveRestaurantTableCount()
+    {
+        return _statisticDal.GetActiveRestaurantTableCount();
+    }
 }

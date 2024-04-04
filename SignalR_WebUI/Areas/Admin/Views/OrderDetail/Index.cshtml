@@ -1,0 +1,63 @@
+﻿@model IList<ResultOrderDetailDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+
+<div class="container-fluid">
+    <h4 class="page-title">Sipariş Detayı İşlemleri</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Sipariş Detayı Listesi</div>
+            </div>
+            <div class="card-body">
+                <div class="card-sub">
+                    Sipariş detayları ile ilgili işlemleri buradan yapabilirsiniz.
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Masa Adı</th>
+                            <th scope="col" class="text-center">Siparişler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var orderTableName in Model.GroupBy(x => x.orderTableName))
+                        {
+                            <tr>
+                                <th>@orderTableName.Key</th>
+                                <td>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Ürün Adı</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Birim Fiyatı</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Adeti</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Sil</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Güncelle</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in orderTableName)
+                                            {
+                                                <tr>
+                                                    <td>@item.productName</td>
+                                                    <td>@item.unitPrice</td>
+                                                    <td>@item.productCount</td>
+                                                    <td><a href="" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                                    <td><a href="" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

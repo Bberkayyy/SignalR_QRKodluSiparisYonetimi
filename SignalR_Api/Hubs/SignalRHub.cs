@@ -83,6 +83,21 @@ public class SignalRHub : Hub
 
         var restaurantTableCount = _statisticService.TGetRestaurantTableCount();
         await Clients.All.SendAsync("receiveRestaurantTableCount", restaurantTableCount);
+
+        var avgProductPriceProgress = _statisticService.TGetAvgProductPrice();
+        await Clients.All.SendAsync("receiveAvgProductPriceProgress", avgProductPriceProgress.ToString("0.00"));
+
+        var productCountProgress = _statisticService.TGetProductCount();
+        await Clients.All.SendAsync("receiveProductCountProgress", productCountProgress);
+
+        var activeProductCountProgress = _statisticService.TGetActiveProductCount();
+        await Clients.All.SendAsync("receiveActiveProductCount", activeProductCountProgress);
+
+        var activeCategoryCountProgress = _statisticService.TGetActiveCategoryCount();
+        await Clients.All.SendAsync("receiveActiveCategoryCount", activeCategoryCountProgress);
+        
+        var activeRestaurantTableCountProgress = _statisticService.TGetActiveRestaurantTableCount();
+        await Clients.All.SendAsync("receiveActiveRestaurantTableCount", activeRestaurantTableCountProgress);
     }
     public async Task GetReservationList()
     {

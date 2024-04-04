@@ -86,4 +86,9 @@ public class StatisticDal : IStatisticDal
     {
         return _context.RestaurantTables.Count();
     }
+
+    public int GetActiveRestaurantTableCount()
+    {
+        return _context.RestaurantTables.Where(x => x.Status == true).Count();
+    }
 }

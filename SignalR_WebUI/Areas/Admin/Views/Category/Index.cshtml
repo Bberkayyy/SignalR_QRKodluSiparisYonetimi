@@ -8,40 +8,48 @@
 <div class="container-fluid">
     <h4 class="page-title">Kategori İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Kategori Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    Kategoriler ile ilgili işlemleri buradan yapabilirsiniz.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Kategori Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Kategori Adı</th>
-                            <th scope="col">Durumu</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            count++;
+                <div class="card-body">
+                    <div class="card-sub">
+                        Kategoriler ile ilgili işlemleri buradan yapabilirsiniz.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <th>@count</th>
-                                <td>@item.name</td>
-                                <td>@(item.status ? "Aktif" : "Pasif")</td>
-                                <td><a href="/Admin/Category/DeleteCategory/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/Category/UpdateCategory/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Kategori Adı</th>
+                                <th scope="col">Durumu</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/Category/CreateCategory/" class="btn btn-outline-primary">Kategori Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th>@count</th>
+                                    <td>@item.name</td>
+                                    <td>@(item.status ? "Aktif" : "Pasif")</td>
+                                    <td><a href="/Admin/Category/DeleteCategory/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/Category/UpdateCategory/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Category/CreateCategory/" class="btn btn-outline-primary">Kategori Ekle</a>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Kategori bilgisi bulunamadı. Kategori eklemek için "Kategori Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Category/CreateCategory/" class="btn btn-outline-primary">Kategori Ekle</a>
+        }
     </div>
 </div>

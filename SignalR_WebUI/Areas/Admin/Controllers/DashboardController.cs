@@ -4,7 +4,7 @@ namespace SignalR_WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]")]
-public class ProgressBarController : Controller
+public class DashboardController : Controller
 {
     [Route("Index")]
     public IActionResult Index()

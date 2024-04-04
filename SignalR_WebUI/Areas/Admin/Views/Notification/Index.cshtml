@@ -8,47 +8,60 @@
 <div class="container-fluid">
     <h4 class="page-title">Bildirim İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Bildirim Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    Bildirimler ile ilgili işlemleri buradan yapabilirsiniz.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Bildirim Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Açıklama</th>
-                            <th scope="col">Tarih</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                            <th scope="col">Okundu Yap</th>
-                            <th scope="col">Okunmadı Yap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            count++;
+                <div class="card-body">
+                    <div class="card-sub">
+                        Bildirimler ile ilgili işlemleri buradan yapabilirsiniz.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <th>@count</th>
-                                <td>@item.description</td>
-                                <td>@item.date.ToString("dd MMM yyyy HH:mm")</td>
-                                <td>@(item.status ? "Okundu" : "Okunmadı")</td>
-                                <td><a href="/Admin/Notification/DeleteNotification/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/Notification/UpdateNotification/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
-                                <td><a href="/Admin/Notification/ChangeStatusToTrue/@item.id" class="btn btn-outline-info btn-round">Okundu Yap</a></td>
-                                <td><a href="/Admin/Notification/ChangeStatusToFalse/@item.id" class="btn btn-outline-dark btn-round">Okunmadı Yap</a></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
+                                <th scope="col">Okundu/Okunmadı Yap</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/Notification/CreateNotification/" class="btn btn-outline-primary">Bildirim Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th>@count</th>
+                                    <td>@item.description</td>
+                                    <td>@item.date.ToString("dd MMM yyyy HH:mm")</td>
+                                    <td>@(item.status ? "Okundu" : "Okunmadı")</td>
+                                    <td><a href="/Admin/Notification/DeleteNotification/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/Notification/UpdateNotification/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                    @if (!item.status)
+                                    {
+                                        <td><a href="/Admin/Notification/ChangeStatusToTrue/@item.id" class="btn btn-outline-info btn-round">Okundu Yap</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/Admin/Notification/ChangeStatusToFalse/@item.id" class="btn btn-outline-dark btn-round">Okunmadı Yap</a></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Notification/CreateNotification/" class="btn btn-outline-primary">Bildirim Ekle</a>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Bildirim bilgisi bulunamadı. Bildirim eklemek için "Bildirim Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Notification/CreateNotification/" class="btn btn-outline-primary">Bildirim Ekle</a>
+        }
     </div>
 </div>
 

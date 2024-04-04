@@ -6,39 +6,48 @@
 <div class="container-fluid">
     <h4 class="page-title">Ana Sayfa İletişim İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">İletişim Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    İletişim ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> iletişim bilgisi bulunmalıdır.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">İletişim Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Konum</th>
-                            <th scope="col">Telefon</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                <div class="card-body">
+                    <div class="card-sub">
+                        İletişim ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> iletişim bilgisi bulunmalıdır.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <td>@item.location</td>
-                                <td>@item.phone</td>
-                                <td>@item.mail</td>
-                                <td><a href="/Admin/Contact/DeleteContact/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/Contact/UpdateContact/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                <th scope="col">Konum</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/Contact/CreateContact/" class="btn btn-outline-primary">İletişim Bilgisi Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.location</td>
+                                    <td>@item.phone</td>
+                                    <td>@item.mail</td>
+                                    <td><a href="/Admin/Contact/DeleteContact/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/Contact/UpdateContact/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <p class="card-sub"><strong>Yeni iletişim bilgisi ekleyebilmek için mevcut iletişim bilgisi silinmelidir.</strong></p>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">İletişim bilgisi bulunamadı. İletişim bilgisi eklemek için "İletişim Bilgisi Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Contact/CreateContact/" class="btn btn-outline-primary">İletişim Bilgisi Ekle</a>
+        }
     </div>
 </div>

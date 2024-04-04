@@ -1,0 +1,47 @@
+﻿@model UpdateOrderDto
+@{
+    ViewData["Title"] = "UpdateOrder";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+<div class="container-fluid">
+    <h4 class="page-title">Sipariş İşlemleri</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Sipariş Güncelleme Sayfası</div>
+                </div>
+                <form method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="name">Masa Adı</label>
+                            @Html.DropDownListFor(x => x.TableName, (IList<SelectListItem>)ViewBag.restaurantTablesForUpdate, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Sipariş Tarihi</label>
+                            <input type="datetime-local" class="form-control" asp-for="Date" id="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="totalPrice">Ücreti</label>
+                            <input type="text" class="form-control" asp-for="TotalPrice" id="totalPrice">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Sipariş Durumu</label>
+                            @Html.DropDownListFor(x => x.Status, (IList<SelectListItem>)ViewBag.orderStatus, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Açıklaması</label>
+                            <input type="text" class="form-control" asp-for="Description" id="description" />
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success">Güncelle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

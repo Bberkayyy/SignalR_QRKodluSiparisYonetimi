@@ -22,4 +22,5 @@ public interface IStatisticService
     decimal TGetTotalMoneyCaseAmount();
     decimal TGetTodayTotalPrice();
     int TGetRestaurantTableCount();
+    int TGetActiveRestaurantTableCount();
 }

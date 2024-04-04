@@ -22,4 +22,5 @@ public interface IStatisticDal
     decimal GetTotalMoneyCaseAmount();
     decimal GetTodayTotalPrice();
     int GetRestaurantTableCount();
+    int GetActiveRestaurantTableCount();
 }

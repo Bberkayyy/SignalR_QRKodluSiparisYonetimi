@@ -8,6 +8,8 @@
 <div class="container-fluid">
     <h4 class="page-title">Ürün İşlemleri</h4>
     <div class="col-md-12">
+        @if (Model.Count()>0)
+        {
         <div class="card">
             <div class="card-header">
                 <div class="card-title">Ürün Listesi</div>
@@ -51,6 +53,12 @@
                 <a href="/Admin/Product/CreateProduct/" class="btn btn-outline-primary">Ürün Ekle</a>
             </div>
         </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Ürün bilgisi bulunamadı. Ürün bilgisi eklemek için "Ürün Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Product/CreateProduct/" class="btn btn-outline-primary">Ürün Ekle</a>
+        }
     </div>
 </div>
 

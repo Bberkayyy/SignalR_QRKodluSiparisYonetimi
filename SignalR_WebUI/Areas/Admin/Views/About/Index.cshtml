@@ -7,40 +7,48 @@
 <div class="container-fluid">
     <h4 class="page-title">Hakkımızda İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Hakkımızda Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    Hakkımızda alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong>hakkımızda bilgisi bulunmalıdır.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Hakkımızda Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Başlık</th>
-                            <th scope="col">Resim</th>
-                            <th scope="col">Açıklama</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            count++;
+                <div class="card-body">
+                    <div class="card-sub">
+                        Hakkımızda alanı ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>1 adet</strong> hakkımızda bilgisi bulunmalıdır.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <td>@item.title</td>
-                                <td><img class="img-fluid" style="height:50px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
-                                <td>@item.description</td>
-                                <td><a href="/Admin/About/DeleteAbout/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/About/UpdateAbout/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                <th scope="col">Başlık</th>
+                                <th scope="col">Resim</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/About/CreateAbout/" class="btn btn-outline-primary">Hakkımızda Bilgisi Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@item.title</td>
+                                    <td><img class="img-fluid" style="height:50px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
+                                    <td>@item.description</td>
+                                    <td><a href="/Admin/About/DeleteAbout/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/About/UpdateAbout/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <p class="card-sub"><strong>Yeni hakkımızda bilgisi ekleyebilmek için mevcut hakkımızda bilgisi silinmelidir.</strong></p>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Hakkımızda bilgisi bulunamadı. Hakkımızda bilgisi eklemek için "Hakkımızda Bilgisi Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/About/CreateAbout/" class="btn btn-outline-primary">Hakkımızda Bilgisi Ekle</a>
+        }
     </div>
 </div>

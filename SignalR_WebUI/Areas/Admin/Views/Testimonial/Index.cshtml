@@ -7,44 +7,52 @@
 <div class="container-fluid">
     <h4 class="page-title">Referans İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Referanslarımızın Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    Müşterilerimizin yorumları ile ilgili işlemleri buradan yapabilirsiniz.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Referanslarımızın Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Müşteri Adı</th>
-                            <th scope="col">Ünvanı</th>
-                            <th scope="col">Yorum</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                <div class="card-body">
+                    <div class="card-sub">
+                        Müşterilerimizin yorumları ile ilgili işlemleri buradan yapabilirsiniz.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <td>#</td>
-                                <td><img class="img-fluid" style="height:60px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
-                                <td>@item.name</td>
-                                <td>@item.title</td>
-                                <td>@item.comment</td>
-                                <td>@(item.status ? "Yayında" : "Yayında Değil")</td>
-                                <td><a href="/Admin/Testimonial/DeleteTestimonial/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/Testimonial/UpdateTestimonial/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                <th scope="col"></th>
+                                <th scope="col">Müşteri Adı</th>
+                                <th scope="col">Ünvanı</th>
+                                <th scope="col">Yorum</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/Testimonial/CreateTestimonial/" class="btn btn-outline-primary">Müşteri Yorumu Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img class="img-fluid" style="height:60px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
+                                    <td>@item.name</td>
+                                    <td>@item.title</td>
+                                    <td>@item.comment</td>
+                                    <td>@(item.status ? "Yayında" : "Yayında Değil")</td>
+                                    <td><a href="/Admin/Testimonial/DeleteTestimonial/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/Testimonial/UpdateTestimonial/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Testimonial/CreateTestimonial/" class="btn btn-outline-primary">Müşteri Yorumu Ekle</a>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Müşteri yorumu bulunamadı. Müşteri yorumu eklemek için "Müşteri Yorumu Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Testimonial/CreateTestimonial/" class="btn btn-outline-primary">Müşteri Yorumu Ekle</a>
+        }
+
     </div>
 </div>

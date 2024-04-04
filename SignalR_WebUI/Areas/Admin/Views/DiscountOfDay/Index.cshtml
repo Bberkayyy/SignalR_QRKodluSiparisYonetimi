@@ -6,47 +6,60 @@
 <div class="container-fluid">
     <h4 class="page-title">Günün Ürünü İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Günün Ürünü Listesi</div>
-            </div>
-            <div class="card-body">
-                <div class="card-sub">
-                    Günün ürünü ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>2 adet</strong> günün ürünü aktif edilmelidir.
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Günün Ürünü Listesi</div>
                 </div>
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Ürün</th>
-                            <th scope="col">İndirim Oranı</th>
-                            <th scope="col">Durumu</th>
-                            <th scope="col">Açıklama</th>
-                            <th scope="col">Sil</th>
-                            <th scope="col">Güncelle</th>
-                            <th scope="col">Aktif Yap</th>
-                            <th scope="col">Pasif Yap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                <div class="card-body">
+                    <div class="card-sub">
+                        Günün ürünü ile ilgili işlemleri buradan yapabilirsiniz. Sayfa düzeni için sadece <strong>2 adet</strong> günün ürünü aktif edilmelidir.
+                    </div>
+                    <table class="table mt-3">
+                        <thead>
                             <tr>
-                                <td><img class="img-fluid" style="height:60px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
-                                <td>@item.title</td>
-                                <td>@item.amount</td>
-                                <td>@(item.status ? "Aktif" : "Pasif")</td>
-                                <td>@item.description</td>
-                                <td><a href="/Admin/DiscountOfDay/DeleteDiscountOfDay/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                <td><a href="/Admin/DiscountOfDay/UpdateDiscountOfDay/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
-                                <td><a href="/Admin/DiscountOfDay/statustotrue/@item.id" class="btn btn-outline-info btn-round">Aktif Yap</a></td>
-                                <td><a href="/Admin/DiscountOfDay/statustofalse/@item.id" class="btn btn-outline-dark btn-round">Pasif Yap</a></td>
+                                <th scope="col"></th>
+                                <th scope="col">Ürün</th>
+                                <th scope="col">İndirim Oranı</th>
+                                <th scope="col">Durumu</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
+                                <th scope="col">Aktif/Pasif Yap</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <a href="/Admin/DiscountOfDay/CreateDiscountOfDay/" class="btn btn-outline-primary">Günün Ürünü Ekle</a>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img class="img-fluid" style="height:60px;width:80px;border-radius:50%" src="@item.imageUrl" alt=""></td>
+                                    <td>@item.title</td>
+                                    <td>@item.amount</td>
+                                    <td>@(item.status ? "Aktif" : "Pasif")</td>
+                                    <td>@item.description</td>
+                                    <td><a href="/Admin/DiscountOfDay/DeleteDiscountOfDay/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                    <td><a href="/Admin/DiscountOfDay/UpdateDiscountOfDay/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                    @if (!item.status)
+                                    {
+                                        <td><a href="/Admin/DiscountOfDay/statustotrue/@item.id" class="btn btn-outline-info btn-round @(Model.Count(x => x.status == true)>= 2 ? " disabled" : "")">Aktif Yap</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/Admin/DiscountOfDay/statustofalse/@item.id" class="btn btn-outline-dark btn-round">Pasif Yap</a></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/DiscountOfDay/CreateDiscountOfDay/" class="btn btn-outline-primary">Günün Ürünü Ekle</a>
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Günün ürünü bulunamadı. Günün ürünü eklemek için "Günün Ürünü Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/DiscountOfDay/CreateDiscountOfDay/" class="btn btn-outline-primary">Günün Ürünü Ekle</a>
+        }
     </div>
 </div>

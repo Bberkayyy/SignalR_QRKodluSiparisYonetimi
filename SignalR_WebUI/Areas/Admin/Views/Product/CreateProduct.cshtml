@@ -3,6 +3,11 @@
     ViewData["Title"] = "CreateProduct";
     Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
 }
+<script>
+    $(document).ready(function () {
+        $("#categoryDropdown option:first").attr('disabled', 'disabled');
+    });
+</script>
 
 <div class="container-fluid">
     <h4 class="page-title">Ürün İşlemleri</h4>
@@ -28,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="categoryId">Kategorisi</label>
-                            @Html.DropDownListFor(x => x.CategoryId, (IList<SelectListItem>)ViewBag.categories, "Kategori Seçiniz", new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.CategoryId, (IList<SelectListItem>)ViewBag.categories, "Kategori Seçiniz", new { @class = "form-control", id = "categoryDropdown" })
                         </div>
                         <div class="form-group">
                             <label for="description">Açıklaması</label>

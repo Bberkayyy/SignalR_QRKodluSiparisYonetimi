@@ -28,7 +28,7 @@
                                  <thead>
                                      <tr>
                                          <th scope="col">#</th>
-                                         <th scope="col">Rezervasyon Adı</th>
+                                         <th scope="col">Adı</th>
                                          <th scope="col">Telefon</th>
                                          <th scope="col">Mail Adresi</th>
                                          <th scope="col">Kişi Sayısı</th>
@@ -67,17 +67,25 @@
 <div class="container-fluid">
     <h4 class="page-title">Rezervasyon İşlemleri</h4>
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
+        @if (Model.Count() > 0)
+        {
+            <div class="card">
+                <div class="card-header">
                 <div class="card-title">Rezervasyon Listesi</div>
             </div>
             <div class="card-body">
                 <div class="card-sub">
-                    Rezervasyon ile ilgili işlemleri buradan yapabilirsiniz.
+                    Rezervasyonlar ile ilgili işlemleri buradan yapabilirsiniz.
                 </div>
                 <div id="reservationList"></div>
                 <a href="/Admin/Reservation/CreateReservation/" class="btn btn-outline-primary">Rezervasyon Ekle</a>
             </div>
         </div>
+        }
+        else
+        {
+            <p class="bg-danger text-white p-4 text-center card-body table-responsive">Rezervasyon bilgisi bulunamadı. Rezervasyon bilgisi eklemek için "Rezervasyon Ekle" butonuna tıklayınız.</p>
+            <a href="/Admin/Reservation/CreateReservation/" class="btn btn-outline-primary">Rezervasyon Ekle</a>
+        }
     </div>
 </div>

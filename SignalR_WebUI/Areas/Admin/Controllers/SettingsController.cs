@@ -43,7 +43,7 @@ public class SettingsController : Controller
             user.UserName = editUserDto.Username;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, editUserDto.Password);
             await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index", "ProgressBar", new { area = "Admin" });
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
         return View();
     }
