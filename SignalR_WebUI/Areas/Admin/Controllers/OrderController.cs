@@ -22,7 +22,7 @@ public class OrderController : Controller
     public async Task<IActionResult> Index()
     {
         HttpClient client = _httpClientFactory.CreateClient();
-        HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/Orders");
+        HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/Orders/getallwithrelationships");
         if (responseMessage.IsSuccessStatusCode)
         {
             string jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -97,7 +97,7 @@ public class OrderController : Controller
         IList<SelectListItem>? values = restaurantTables.Select(x => new SelectListItem
         {
             Text = x.name,
-            Value = x.name,
+            Value = x.id.ToString(),
         }).ToList();
         return values;
     }

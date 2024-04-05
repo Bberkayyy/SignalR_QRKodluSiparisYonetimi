@@ -31,10 +31,16 @@ public class OrderDetailsController : ControllerBase
         IList<GetAllOrderDetailWithRelationshipsResponseDto> values = _mapper.Map<IList<GetAllOrderDetailWithRelationshipsResponseDto>>(_orderDetailService.TGetAllOrderDetailsWithRelationships());
         return Ok(values);
     }
-    [HttpGet("getwithcategory/{id}")]
+    [HttpGet("getwithrelationships/{id}")]
     public IActionResult GetOrderDetailWithRelationships(int id)
     {
         GetOrderDetailWithRelationshipsResponseDto value = _mapper.Map<GetOrderDetailWithRelationshipsResponseDto>(_orderDetailService.TGetOrderDetailWithRelationships(id));
+        return Ok(value);
+    }
+    [HttpGet("getwithrelationshipsbtorderid/{id}")]
+    public IActionResult GetOrderDetailWithRelationshipsByOrderId(int id)
+    {
+        GetOrderDetailWithRelationshipsByOrderIdResponseDto value = _mapper.Map<GetOrderDetailWithRelationshipsByOrderIdResponseDto>(_orderDetailService.TGetOrderDetailWithRelationshipsByOrderId(id));
         return Ok(value);
     }
     [HttpPost]

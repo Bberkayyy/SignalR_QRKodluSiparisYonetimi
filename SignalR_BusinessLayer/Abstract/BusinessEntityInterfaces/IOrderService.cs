@@ -9,4 +9,7 @@ namespace SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 
 public interface IOrderService : IGenericService<Order>
 {
+    IList<Order> TGetAllOrderWithRelationships();
+    Order TGetOrderWithRelationships(int id);
+    Order TGetOrderWithRelationshipsByRestaurantTableName(string name);
 }

@@ -5,11 +5,11 @@
 }
 
 <div class="container-fluid">
-    <h4 class="page-title">Sipariş Detayı İşlemleri</h4>
+    <h4 class="page-title">Sipariş İşlemleri</h4>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Sipariş Detayı Listesi</div>
+                <div class="card-title">Sipariş Detayları Listesi</div>
             </div>
             <div class="card-body">
                 <div class="card-sub">
@@ -34,8 +34,8 @@
                                                 <th scope="col" style="width:50%;background-color:whitesmoke;">Ürün Adı</th>
                                                 <th scope="col" style="width:50%;background-color:whitesmoke;">Birim Fiyatı</th>
                                                 <th scope="col" style="width:50%;background-color:whitesmoke;">Adeti</th>
-                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Sil</th>
-                                                <th scope="col" style="width:50%;background-color:whitesmoke;">Güncelle</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;" class="text-center">Sil</th>
+                                                <th scope="col" style="width:50%;background-color:whitesmoke;" class="text-center">Güncelle</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -44,13 +44,14 @@
                                                 <tr>
                                                     <td>@item.productName</td>
                                                     <td>@item.unitPrice</td>
-                                                    <td>@item.productCount</td>
-                                                    <td><a href="" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                                    <td><a href="" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                                    <td class="text-center">@item.productCount</td>
+                                                    <td><a href="/Admin/OrderDetail/DeleteOrderDetail/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
+                                                    <td><a href="/Admin/OrderDetail/UpdateOrderDetail/@orderTableName.Key/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
                                                 </tr>
                                             }
                                         </tbody>
                                     </table>
+                                    <a href="/Admin/OrderDetail/CreateOrderDetail/@orderTableName.Key" class="btn btn-outline-primary">Masaya Ürün Ekle</a>
                                 </td>
                             </tr>
                         }

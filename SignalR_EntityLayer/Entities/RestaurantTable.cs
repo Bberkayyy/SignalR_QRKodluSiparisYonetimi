@@ -12,4 +12,5 @@ public class RestaurantTable
     public string Name { get; set; }
     public bool Status { get; set; }
     public IList<Cart> Carts { get; set; }
+    public IList<Order> Orders { get; set; }
 }

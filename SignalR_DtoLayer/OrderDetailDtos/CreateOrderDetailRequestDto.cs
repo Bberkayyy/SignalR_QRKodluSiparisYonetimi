@@ -11,6 +11,6 @@ public class CreateOrderDetailRequestDto
     public int ProductId { get; set; }
     public int OrderId { get; set; }
     public int ProductCount { get; set; }
-    public decimal UnitPrice { get; set; }
-    public decimal TotalPrice { get; set; }
+    public decimal UnitPrice = 0;
+    public decimal TotalPrice = 0;
 }

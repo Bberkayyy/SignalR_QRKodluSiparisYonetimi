@@ -19,13 +19,19 @@ public class EfOrderDetailDal : GenericRepository<OrderDetail>, IOrderDetailDal
 
     public IList<OrderDetail> GetAllOrderDetailsWithRelationships()
     {
-        IList<OrderDetail> orderDetails = GetAll(include: x => x.Include(x => x.Order).Include(x => x.Product));
+        IList<OrderDetail> orderDetails = GetAll(include: x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
         return orderDetails;
     }
 
     public OrderDetail GetOrderDetailWithRelationships(int id)
     {
-        OrderDetail orderDetail = GetByFilter(x => x.Id == id, x => x.Include(x => x.Order).Include(x => x.Product));
+        OrderDetail orderDetail = GetByFilter(x => x.Id == id, x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
+        return orderDetail;
+    }
+
+    public OrderDetail GetOrderDetailWithRelationshipsByOrderId(int orderId)
+    {
+        OrderDetail orderDetail = GetByFilter(x => x.OrderId == orderId, x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
         return orderDetail;
     }
 }

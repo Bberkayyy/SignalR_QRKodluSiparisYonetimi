@@ -1,0 +1,36 @@
+﻿@model ResultOrderDto
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Layout/AdminLayoutIndex.cshtml";
+}
+
+<div class="container-fluid">
+    <h4 class="page-title">Sipariş İşlemleri</h4>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Sipariş Detayı Sayfası</div>
+            </div>
+            <div class="card-body">
+                <div class="card-sub">
+                    Sipariş detayı ile ilgili işlemleri buradan yapabilirsiniz.
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Model.restaurantTableName</th>
+                            <th scope="col">@Model.date</th>
+                            <th scope="col">@(Model.status ? "Aktif" : "Ödeme Alındı.")</th>
+                            <th scope="col">@Model.totalPrice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @await Component.InvokeAsync("_OrderPageSeeOrderComponentPartial", new { id = Model.id })
+                    </tbody>
+                </table>
+                <a href="/Admin/OrderDetail/CreateOrderDetail/@Model.restaurantTableName" class="btn btn-outline-primary">Masaya Ürün Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+

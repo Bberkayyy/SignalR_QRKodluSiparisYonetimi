@@ -25,6 +25,12 @@ public class OrdersController : ControllerBase
         IList<GetAllOrderResponseDto> values = _mapper.Map<IList<GetAllOrderResponseDto>>(_orderService.TGetAll());
         return Ok(values);
     }
+    [HttpGet("getallwithrelationships")]
+    public IActionResult GetAllWithRelationships()
+    {
+        IList<GetAllOrderWithRelationshipsResponseDto> values = _mapper.Map<IList<GetAllOrderWithRelationshipsResponseDto>>(_orderService.TGetAllOrderWithRelationships());
+        return Ok(values);
+    }
     [HttpPost]
     public IActionResult Create(CreateOrderRequestDto createOrderRequestDto)
     {
@@ -54,5 +60,17 @@ public class OrdersController : ControllerBase
         Order value = _orderService.TGetByFilter(x => x.Id == id);
         GetOrderResponseDto getOrder = _mapper.Map<GetOrderResponseDto>(value);
         return Ok(getOrder);
+    }
+    [HttpGet("getwithrelationships/{id}")]
+    public IActionResult GetWithRelationships(int id)
+    {
+        GetOrderWithRelationshipsResponseDto value = _mapper.Map<GetOrderWithRelationshipsResponseDto>(_orderService.TGetOrderWithRelationships(id));
+        return Ok(value);
+    }
+    [HttpGet("getwithrelationshipsbyrestauranttablename/{name}")]
+    public IActionResult GetWithRelationshipsByRestaurantTableName(string name)
+    {
+        GetOrderWithRelationshipsByRestaurantTableNameResponseDto value = _mapper.Map<GetOrderWithRelationshipsByRestaurantTableNameResponseDto>(_orderService.TGetOrderWithRelationshipsByRestaurantTableName(name));
+        return Ok(value);
     }
 }

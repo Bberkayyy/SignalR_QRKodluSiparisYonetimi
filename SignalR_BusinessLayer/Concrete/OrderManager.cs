@@ -14,4 +14,19 @@ public class OrderManager : GenericManager<Order, IOrderDal>, IOrderService
     public OrderManager(IOrderDal entityDal) : base(entityDal)
     {
     }
+
+    public Order TGetOrderWithRelationshipsByRestaurantTableName(string name)
+    {
+        return _entityDal.GetOrderWithRelationshipsByRestaurantTableName(name);
+    }
+
+    public IList<Order> TGetAllOrderWithRelationships()
+    {
+        return _entityDal.GetAllOrderWithRelationships();
+    }
+
+    public Order TGetOrderWithRelationships(int id)
+    {
+        return _entityDal.GetOrderWithRelationships(id);
+    }
 }

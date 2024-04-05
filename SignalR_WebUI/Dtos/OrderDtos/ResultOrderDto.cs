@@ -3,7 +3,7 @@
 public class ResultOrderDto
 {
     public int id { get; set; }
-    public string tableName { get; set; }
+    public string restaurantTableName { get; set; }
     public DateTime date { get; set; }
     public string description { get; set; }
     public decimal totalPrice { get; set; }

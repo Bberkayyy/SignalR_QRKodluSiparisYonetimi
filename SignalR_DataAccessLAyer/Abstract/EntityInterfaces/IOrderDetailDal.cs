@@ -11,4 +11,5 @@ public interface IOrderDetailDal : IGenericDal<OrderDetail>
 {
     IList<OrderDetail> GetAllOrderDetailsWithRelationships();
     OrderDetail GetOrderDetailWithRelationships(int id);
+    OrderDetail GetOrderDetailWithRelationshipsByOrderId(int orderId);
 }

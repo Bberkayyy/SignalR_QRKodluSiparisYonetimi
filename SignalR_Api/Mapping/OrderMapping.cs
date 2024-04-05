@@ -14,5 +14,8 @@ public class OrderMapping : Profile
         CreateMap<Order, CreatedOrderResponseDto>().ReverseMap();
         CreateMap<Order, UpdateOrderRequestDto>().ReverseMap();
         CreateMap<Order, UpdatedOrderResponseDto>().ReverseMap();
+        CreateMap<Order, GetAllOrderWithRelationshipsResponseDto>().ForMember(x => x.RestaurantTableName, opt => opt.MapFrom(x => x.RestaurantTable.Name)).ReverseMap();
+        CreateMap<Order, GetOrderWithRelationshipsResponseDto>().ForMember(x => x.RestaurantTableName, opt => opt.MapFrom(x => x.RestaurantTable.Name)).ReverseMap();
+        CreateMap<Order, GetOrderWithRelationshipsByRestaurantTableNameResponseDto>().ForMember(x => x.RestaurantTableName, opt => opt.MapFrom(x => x.RestaurantTable.Name)).ReverseMap();
     }
 }

@@ -38,7 +38,7 @@
                                 count++;
                                 <tr>
                                     <th>@count</th>
-                                    <td>@item.tableName</td>
+                                    <td>@item.restaurantTableName</td>
                                     <td>@item.description</td>
                                     <td>@item.date.ToString("dd MMM yyyy HH:mm")</td>
                                     <td>@item.totalPrice</td>
@@ -51,6 +51,7 @@
                         </tbody>
                     </table>
                     <a href="/Admin/Order/CreateOrder/" class="btn btn-outline-primary">Sipariş Ekle</a>
+                    <a href="/Admin/OrderDetail/Index/" class="btn btn-outline-info">Sipariş Detaylarını Gör</a>
                 </div>
             </div>
         }

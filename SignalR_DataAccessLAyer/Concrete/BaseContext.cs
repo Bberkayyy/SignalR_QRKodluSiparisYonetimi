@@ -16,6 +16,8 @@ public class BaseContext : IdentityDbContext<AppUser, AppRole, int>
     {
         modelBuilder.Entity<Cart>().ToTable(opt => opt.HasTrigger("UpdateCartTotalAmount"));
         modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("SumMoneyCases"));
+        modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("UpdateRestaurantTableStatusToTrue"));
+        modelBuilder.Entity<Order>().ToTable(opt => opt.HasTrigger("UpdateRestaurantTableStatusToFalse"));
         modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("DecreaseOrderTotalPrice"));
         modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("IncreaseOrderTotalPrice"));
         modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("UpdateOrderDetailsTotalPrice"));

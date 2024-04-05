@@ -15,6 +15,11 @@ public class OrderDetailManager : GenericManager<OrderDetail, IOrderDetailDal>, 
     {
     }
 
+    public OrderDetail TGetOrderDetailWithRelationshipsByOrderId(int orderId)
+    {
+        return _entityDal.GetOrderDetailWithRelationshipsByOrderId(orderId);
+    }
+
     public IList<OrderDetail> TGetAllOrderDetailsWithRelationships()
     {
         return _entityDal.GetAllOrderDetailsWithRelationships();
