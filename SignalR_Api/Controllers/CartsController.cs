@@ -80,4 +80,16 @@ public class CartsController : ControllerBase
         GetCartWithRelationshipsResponseDto getCart = _mapper.Map<GetCartWithRelationshipsResponseDto>(value);
         return Ok(getCart);
     }
+    [HttpGet("decreaseproductcount")]
+    public IActionResult DecreaseProductCount(int id)
+    {
+        _cartService.TDecreaseProductCount(id);
+        return Ok("Ürün sayısı azaltıldı.");
+    }
+    [HttpGet("increaseproductcount")]
+    public IActionResult InreaseProductCount(int id)
+    {
+        _cartService.TIncreaseProductCount(id);
+        return Ok("Ürün sayısı arttırıldı.");
+    }
 }

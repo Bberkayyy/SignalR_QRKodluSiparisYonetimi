@@ -12,4 +12,5 @@ public interface IOrderService : IGenericService<Order>
     IList<Order> TGetAllOrderWithRelationships();
     Order TGetOrderWithRelationships(int id);
     Order TGetOrderWithRelationshipsByRestaurantTableName(string name);
+    void TChangeStatusToFalse(int id);
 }

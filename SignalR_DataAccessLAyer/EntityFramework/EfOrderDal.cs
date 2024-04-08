@@ -17,6 +17,15 @@ public class EfOrderDal : GenericRepository<Order>, IOrderDal
     {
     }
 
+    public void ChangeStatusToFalse(int id)
+    {
+        Order value = GetByFilter(x => x.Id == id);
+        value.Status = false;
+        MoneyCase? moneyCase = _context.MoneyCases.FirstOrDefault();
+        moneyCase.TotalAmount += value.TotalPrice;
+        _context.SaveChanges();
+    }
+
     public IList<Order> GetAllOrderWithRelationships()
     {
         return GetAll(include: x => x.Include(x => x.RestaurantTable));

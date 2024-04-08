@@ -40,7 +40,7 @@
                                     <th>@count</th>
                                     <td>@item.restaurantTableName</td>
                                     <td>@item.description</td>
-                                    <td>@item.date.ToString("dd MMM yyyy HH:mm")</td>
+                                    <td>@item.date.ToString("dd MMMM yyyy HH:mm", System.Globalization.CultureInfo.GetCultureInfo("Tr-tr"))</td>
                                     <td>@item.totalPrice</td>
                                     <td>@(item.status ? "Aktif" : "Ödeme Alındı")</td>
                                     <td><a href="/Admin/OrderDetail/Detail/@item.id" class="btn btn-outline-warning btn-round">Siparişi Gör</a></td>

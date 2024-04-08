@@ -18,11 +18,11 @@ public class _OrderPageSeeOrderComponentPartial : ViewComponent
     {
         HttpClient client = _httpClientFactory.CreateClient();
         int restaurantTableId = await GetRestaurantTableId(id);
-        HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/OrderDetails/getwithrelationshipsbtorderid/" + restaurantTableId);
+        HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/OrderDetails/getallwithrelationshipsbyorderid/" + restaurantTableId);
         if (responseMessage.IsSuccessStatusCode)
         {
             string jsonData = await responseMessage.Content.ReadAsStringAsync();
-            ResultOrderDetailDto? values = JsonConvert.DeserializeObject<ResultOrderDetailDto>(jsonData);
+            IList<ResultOrderDetailDto>? values = JsonConvert.DeserializeObject<IList<ResultOrderDetailDto>>(jsonData);
             return View(values);
         }
         return View();

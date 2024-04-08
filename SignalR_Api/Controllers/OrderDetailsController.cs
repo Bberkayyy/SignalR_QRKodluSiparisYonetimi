@@ -37,11 +37,17 @@ public class OrderDetailsController : ControllerBase
         GetOrderDetailWithRelationshipsResponseDto value = _mapper.Map<GetOrderDetailWithRelationshipsResponseDto>(_orderDetailService.TGetOrderDetailWithRelationships(id));
         return Ok(value);
     }
-    [HttpGet("getwithrelationshipsbtorderid/{id}")]
+    [HttpGet("getwithrelationshipsbyorderid/{id}")]
     public IActionResult GetOrderDetailWithRelationshipsByOrderId(int id)
     {
         GetOrderDetailWithRelationshipsByOrderIdResponseDto value = _mapper.Map<GetOrderDetailWithRelationshipsByOrderIdResponseDto>(_orderDetailService.TGetOrderDetailWithRelationshipsByOrderId(id));
         return Ok(value);
+    }
+    [HttpGet("getallwithrelationshipsbyorderid/{id}")]
+    public IActionResult GetAllOrderDetailWithRelationshipsByOrderId(int id)
+    {
+        IList<GetAllOrderDetailWithRelationshipsByOrderIdResponseDto> values = _mapper.Map<IList<GetAllOrderDetailWithRelationshipsByOrderIdResponseDto>>(_orderDetailService.TGetAllOrderDetailWithRelationshipsByOrderId(id));
+        return Ok(values);
     }
     [HttpPost]
     public IActionResult Create(CreateOrderDetailRequestDto createOrderDetailRequestDto)

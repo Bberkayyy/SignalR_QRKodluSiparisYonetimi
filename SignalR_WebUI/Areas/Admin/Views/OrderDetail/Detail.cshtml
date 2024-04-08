@@ -17,11 +17,11 @@
                 </div>
                 <table class="table mt-3">
                     <thead>
-                        <tr>
+                        <tr style="background-color:orange">
                             <th scope="col">@Model.restaurantTableName</th>
                             <th scope="col">@Model.date</th>
                             <th scope="col">@(Model.status ? "Aktif" : "Ödeme Alındı.")</th>
-                            <th scope="col">@Model.totalPrice</th>
+                            <th scope="col">Toplam Ücret : @Model.totalPrice</th>
                         </tr>
                     </thead>
                     <tbody>

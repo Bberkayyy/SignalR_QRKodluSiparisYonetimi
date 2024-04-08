@@ -21,27 +21,27 @@ public class GenericManager<TEntity, TEntityDal> : IGenericService<TEntity>
         _entityDal = entityDal;
     }
 
-    public TEntity TAdd(TEntity entity)
+    public virtual TEntity TAdd(TEntity entity)
     {
         return _entityDal.Add(entity);
     }
 
-    public TEntity TDelete(TEntity entity)
+    public virtual TEntity TDelete(TEntity entity)
     {
         return _entityDal.Delete(entity);
     }
 
-    public IList<TEntity> TGetAll(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+    public virtual IList<TEntity> TGetAll(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
     {
         return _entityDal.GetAll(predicate, include);
     }
 
-    public TEntity TGetByFilter(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+    public virtual TEntity TGetByFilter(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
     {
         return _entityDal.GetByFilter(predicate, include);
     }
 
-    public TEntity TUpdate(TEntity entity)
+    public virtual TEntity TUpdate(TEntity entity)
     {
         return _entityDal.Update(entity);
     }

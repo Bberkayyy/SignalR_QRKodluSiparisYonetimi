@@ -34,4 +34,16 @@ public class CartController : Controller
             return RedirectToAction("Index");
         return NoContent();
     }
+    public async Task<IActionResult> DecreaseProductCount(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/Carts/decreaseproductcount?id=" + id);
+        return RedirectToAction("Index");
+    }
+    public async Task<IActionResult> IncreaseProductCount(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/Carts/increaseproductcount?id=" + id);
+        return RedirectToAction("Index");
+    }
 }

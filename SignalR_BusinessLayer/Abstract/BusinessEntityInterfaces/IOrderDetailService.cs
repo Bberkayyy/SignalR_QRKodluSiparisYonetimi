@@ -12,4 +12,5 @@ public interface IOrderDetailService : IGenericService<OrderDetail>
     IList<OrderDetail> TGetAllOrderDetailsWithRelationships();
     OrderDetail TGetOrderDetailWithRelationships(int id);
     OrderDetail TGetOrderDetailWithRelationshipsByOrderId(int orderId);
+    IList<OrderDetail> TGetAllOrderDetailWithRelationshipsByOrderId(int orderId);
 }

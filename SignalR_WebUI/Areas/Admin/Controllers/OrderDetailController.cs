@@ -52,7 +52,7 @@ public class OrderDetailController : Controller
         StringContent content = new(jsonData, Encoding.UTF8, "application/json");
         HttpResponseMessage responseMessage = await client.PostAsync("http://localhost:20666/api/OrderDetails", content);
         if (responseMessage.IsSuccessStatusCode)
-            return RedirectToAction("Index", "OrderDetail", new { area = "Admin" });
+            return RedirectToAction("Detail", "OrderDetail", new { area = "Admin", id = createOrderDetailDto.OrderId });
         return View();
     }
     [Route("DeleteOrderDetail/{id}")]

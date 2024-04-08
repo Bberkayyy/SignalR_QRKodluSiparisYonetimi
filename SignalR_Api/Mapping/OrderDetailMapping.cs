@@ -17,5 +17,6 @@ public class OrderDetailMapping : Profile
         CreateMap<OrderDetail, GetAllOrderDetailWithRelationshipsResponseDto>().ForMember(x => x.ProductName, opt => opt.MapFrom(x => x.Product.Name)).ForMember(x => x.OrderTableName, opt => opt.MapFrom(x => x.Order.RestaurantTable.Name)).ReverseMap();
         CreateMap<OrderDetail, GetOrderDetailWithRelationshipsResponseDto>().ForMember(x => x.ProductName, opt => opt.MapFrom(x => x.Product.Name)).ForMember(x => x.OrderTableName, opt => opt.MapFrom(x => x.Order.RestaurantTable.Name)).ReverseMap();
         CreateMap<OrderDetail, GetOrderDetailWithRelationshipsByOrderIdResponseDto>().ForMember(x => x.ProductName, opt => opt.MapFrom(x => x.Product.Name)).ForMember(x => x.OrderTableName, opt => opt.MapFrom(x => x.Order.RestaurantTable.Name)).ReverseMap();
+        CreateMap<OrderDetail, GetAllOrderDetailWithRelationshipsByOrderIdResponseDto>().ForMember(x => x.ProductName, opt => opt.MapFrom(x => x.Product.Name)).ForMember(x => x.OrderTableName, opt => opt.MapFrom(x => x.Order.RestaurantTable.Name)).ReverseMap();
     }
 }

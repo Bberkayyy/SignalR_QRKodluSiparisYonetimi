@@ -13,4 +13,6 @@ public interface ICartService : IGenericService<Cart>
     IList<Cart> TGetCartListByRestaurantTableIdWithRelationships(int restaurantTableId);
     IList<Cart> TGetAllCartsWithRelationships();
     Cart TGetCartWithRelationships(int id);
+    void TIncreaseProductCount(int id);
+    void TDecreaseProductCount(int id);
 }

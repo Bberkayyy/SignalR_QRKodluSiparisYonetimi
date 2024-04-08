@@ -53,7 +53,9 @@
                             <tr>
                                 <td class="align-middle">@count</td>
                                 <td class="align-middle">@item.productName</td>
-                                <td class="align-middle">@item.productCount</td>
+                                <td class="align-middle">
+                                    <a href="/Cart/DecreaseProductCount/@item.id" class="btn btn-outline-dark" style="border:none;width:20px;height:20px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa fa-minus"></i></a> @item.productCount <a href="/Cart/IncreaseProductCount/@item.id" class="btn btn-outline-dark" style="border:none;width:20px;height:20px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa fa-plus"></i></a>
+                                </td>
                                 <td class="align-middle">@item.productPrice</td>
                                 <td class="align-middle">@item.totalAmount</td>
                                 <td class="align-middle btn-delete"><a href="/Cart/DeleteFromCart/@item.id" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a></td>

@@ -13,4 +13,6 @@ public interface ICartDal : IGenericDal<Cart>
     IList<Cart> GetCartListByRestaurantTableIdWithRelationships(int restaurantTableId);
     IList<Cart> GetAllCartsWithRelationships();
     Cart GetCartWithRelationships(int id);
+    void IncreaseProductCount(int id);
+    void DecreaseProductCount(int id);
 }

@@ -1,4 +1,19 @@
-﻿<div class="sidebar">
+﻿<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(() => {
+        var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:20666/signalrhub").build();
+
+        connection.start().then(() => {
+            console.log(connection.state);
+        }).catch((err) => { console.log(err) });
+
+        connection.on("receiveClientCount", (value) => {
+            $("#clientCount").text(value);
+        });
+    });
+</script>
+<div class="sidebar">
     <div class="scrollbar-inner sidebar-wrapper">
         <div class="user">
             <div class="photo">
@@ -36,6 +51,12 @@
             </div>
         </div>
         <ul class="nav">
+            <li class="nav-item">
+                <a href="#" >
+                    <i class="la la-exclamation"></i>
+                    <p>İstemci Sayısı : <strong id="clientCount"></strong></p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="/Default/Index/">
                     <i class="la la-bullhorn"></i>

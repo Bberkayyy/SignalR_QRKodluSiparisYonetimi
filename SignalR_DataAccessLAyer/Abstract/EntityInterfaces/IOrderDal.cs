@@ -12,4 +12,5 @@ public interface IOrderDal : IGenericDal<Order>
     IList<Order> GetAllOrderWithRelationships();
     Order GetOrderWithRelationships(int id);
     Order GetOrderWithRelationshipsByRestaurantTableName(string name);
+    void ChangeStatusToFalse(int id);
 }

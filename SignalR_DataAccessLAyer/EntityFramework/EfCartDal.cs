@@ -17,6 +17,13 @@ public class EfCartDal : GenericRepository<Cart>, ICartDal
     {
     }
 
+    public void DecreaseProductCount(int id)
+    {
+        Cart value = GetByFilter(x => x.Id == id);
+        value.ProductCount--;
+        _context.SaveChanges();
+    }
+
     public IList<Cart> GetAllCartsWithRelationships()
     {
         IList<Cart> values = GetAll(include: x => x.Include(x => x.Product).Include(x => x.RestaurantTable));
@@ -39,5 +46,12 @@ public class EfCartDal : GenericRepository<Cart>, ICartDal
     {
         Cart value = GetByFilter(x => x.Id == id, x => x.Include(x => x.Product).Include(x => x.RestaurantTable));
         return value;
+    }
+
+    public void IncreaseProductCount(int id)
+    {
+        Cart value = GetByFilter(x => x.Id == id);
+        value.ProductCount++;
+        _context.SaveChanges();
     }
 }

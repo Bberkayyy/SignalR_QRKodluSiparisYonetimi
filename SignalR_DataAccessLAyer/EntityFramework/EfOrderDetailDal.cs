@@ -23,6 +23,12 @@ public class EfOrderDetailDal : GenericRepository<OrderDetail>, IOrderDetailDal
         return orderDetails;
     }
 
+    public IList<OrderDetail> GetAllOrderDetailWithRelationshipsByOrderId(int orderId)
+    {
+        IList<OrderDetail> orderDetails = GetAll(x => x.OrderId == orderId, x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
+        return orderDetails;
+    }
+
     public OrderDetail GetOrderDetailWithRelationships(int id)
     {
         OrderDetail orderDetail = GetByFilter(x => x.Id == id, x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
