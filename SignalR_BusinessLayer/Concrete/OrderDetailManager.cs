@@ -47,4 +47,24 @@ public class OrderDetailManager : GenericManager<OrderDetail, IOrderDetailDal>, 
     {
         return _entityDal.GetAllOrderDetailWithRelationshipsByOrderId(orderId);
     }
+
+    public void TIncreaseProductCount(int id)
+    {
+        _entityDal.IncreaseProductCount(id);
+        OrderDetail values = _entityDal.GetByFilter(x => x.Id == id);
+        decimal productPrice = _productDal.GetByFilter(x => x.Id == values.ProductId).Price;
+        values.TotalPrice = values.ProductCount * productPrice;
+        _orderDal.GetByFilter(x => x.Id == values.OrderId).TotalPrice += values.UnitPrice;
+        base.TUpdate(values);
+    }
+
+    public void TDecreaseProductCount(int id)
+    {
+        _entityDal.DecreaseProductCount(id);
+        OrderDetail values = _entityDal.GetByFilter(x => x.Id == id);
+        decimal productPrice = _productDal.GetByFilter(x => x.Id == values.ProductId).Price;
+        values.TotalPrice = values.ProductCount * productPrice;
+        _orderDal.GetByFilter(x => x.Id == values.OrderId).TotalPrice -= values.UnitPrice;
+        base.TUpdate(values);
+    }
 }

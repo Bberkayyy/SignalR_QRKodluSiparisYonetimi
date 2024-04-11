@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 using SignalR_BusinessLayer.Abstract.BusinessInterfaces;
@@ -16,15 +17,17 @@ public class SignalRHub : Hub
     private readonly IReservationService _reservationService;
     private readonly INotificationService _notificationService;
     private readonly IRestaurantTableService _restaurantTableService;
+    private readonly UserManager<AppUser> _userManager;
     private readonly IMapper _mapper;
 
-    public SignalRHub(IStatisticService statisticService, IReservationService reservationService, IMapper mapper, INotificationService notificationService, IRestaurantTableService restaurantTableService)
+    public SignalRHub(IStatisticService statisticService, IReservationService reservationService, IMapper mapper, INotificationService notificationService, IRestaurantTableService restaurantTableService, UserManager<AppUser> userManager)
     {
         _statisticService = statisticService;
         _reservationService = reservationService;
         _mapper = mapper;
         _notificationService = notificationService;
         _restaurantTableService = restaurantTableService;
+        _userManager = userManager;
     }
 
     public static int clientCount { get; set; }
@@ -72,6 +75,9 @@ public class SignalRHub : Hub
 
         var restaurantTableCount = _statisticService.TGetRestaurantTableCount();
         await Clients.All.SendAsync("receiveRestaurantTableCount", restaurantTableCount);
+
+        var userCount = _userManager.Users.Count();
+        await Clients.All.SendAsync("receiveUserCount", userCount);
     }
     public async Task SendProgress()
     {
@@ -95,7 +101,7 @@ public class SignalRHub : Hub
 
         var activeCategoryCountProgress = _statisticService.TGetActiveCategoryCount();
         await Clients.All.SendAsync("receiveActiveCategoryCount", activeCategoryCountProgress);
-        
+
         var activeRestaurantTableCountProgress = _statisticService.TGetActiveRestaurantTableCount();
         await Clients.All.SendAsync("receiveActiveRestaurantTableCount", activeRestaurantTableCountProgress);
     }

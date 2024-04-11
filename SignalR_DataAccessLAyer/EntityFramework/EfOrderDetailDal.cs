@@ -17,6 +17,13 @@ public class EfOrderDetailDal : GenericRepository<OrderDetail>, IOrderDetailDal
     {
     }
 
+    public void DecreaseProductCount(int id)
+    {
+        OrderDetail value = GetByFilter(x => x.Id == id);
+        value.ProductCount--;
+        _context.SaveChanges();
+    }
+
     public IList<OrderDetail> GetAllOrderDetailsWithRelationships()
     {
         IList<OrderDetail> orderDetails = GetAll(include: x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
@@ -39,5 +46,12 @@ public class EfOrderDetailDal : GenericRepository<OrderDetail>, IOrderDetailDal
     {
         OrderDetail orderDetail = GetByFilter(x => x.OrderId == orderId, x => x.Include(x => x.Order).ThenInclude(x => x.RestaurantTable).Include(x => x.Product));
         return orderDetail;
+    }
+
+    public void IncreaseProductCount(int id)
+    {
+        OrderDetail value = GetByFilter(x => x.Id == id);
+        value.ProductCount++;
+        _context.SaveChanges();
     }
 }

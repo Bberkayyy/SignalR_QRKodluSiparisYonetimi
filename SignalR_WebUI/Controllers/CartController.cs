@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SignalR_WebUI.Dtos.CartDtos;
 using System.Text;
 
 namespace SignalR_WebUI.Controllers;
 
+[AllowAnonymous]
 public class CartController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;

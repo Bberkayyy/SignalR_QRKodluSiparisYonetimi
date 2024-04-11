@@ -107,32 +107,24 @@ public class OrderDetailController : Controller
         }
         return View();
     }
-    //[HttpPost]
-    //[Route("Detail/{id}")]
-    //public async Task<IActionResult> Detail(UpdateOrderDetailDto updateOrderDetailDto)
-    //{
-    //    HttpClient client = _httpClientFactory.CreateClient();
-    //    string jsonData = JsonConvert.SerializeObject(updateOrderDetailDto);
-    //    StringContent content = new(jsonData, Encoding.UTF8, "application/json");
-    //    HttpResponseMessage responseMessage = await client.PutAsync("http://localhost:20666/api/OrderDetails", content);
-    //    if (responseMessage.IsSuccessStatusCode)
-    //        return RedirectToAction("Index", "OrderDetail", new { area = "Admin" });
-    //    return View();
-    //}
-    //private async Task<IList<SelectListItem>> GetRestaurantTableList(string name)
-    //{
-    //    HttpClient client = _httpClientFactory.CreateClient();
-    //    HttpResponseMessage resposeMessage = await client.GetAsync("http://localhost:20666/api/RestaurantTables");
-    //    string jsonData = await resposeMessage.Content.ReadAsStringAsync();
-    //    IList<ResultRestaurantTableDto>? restaurantTables = JsonConvert.DeserializeObject<IList<ResultRestaurantTableDto>>(jsonData);
-    //    IList<SelectListItem>? values = restaurantTables.Select(x => new SelectListItem
-    //    {
-    //        Text = x.name,
-    //        Value = x.id.ToString(),
-    //        Selected = x.name == name,
-    //    }).ToList();
-    //    return values;
-    //}
+    [HttpGet]
+    [Route("DecreaseProductCount/{name}/{id}")]
+    public async Task<IActionResult> DecreaseProductCount(int id, string name)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/OrderDetails/decreaseproductcount?id=" + id);
+        int orderId = await GetOrderId(name);
+        return RedirectToAction("Detail", "OrderDetail", new { area = "Admin", id = orderId });
+    }
+    [HttpGet]
+    [Route("IncreaseProductCount/{name}/{id}")]
+    public async Task<IActionResult> IncreaseProductCount(int id, string name)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        await client.GetAsync("http://localhost:20666/api/OrderDetails/increaseproductcount?id=" + id);
+        int orderId = await GetOrderId(name);
+        return RedirectToAction("Detail", "OrderDetail", new { area = "Admin", id = orderId });
+    }
     private async Task<int> GetOrderId(string name)
     {
         HttpClient client = _httpClientFactory.CreateClient();

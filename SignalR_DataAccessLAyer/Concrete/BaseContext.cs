@@ -14,8 +14,6 @@ public class BaseContext : IdentityDbContext<AppUser, AppRole, int>
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("DecreaseOrderTotalPrice"));
-        modelBuilder.Entity<OrderDetail>().ToTable(opt => opt.HasTrigger("IncreaseOrderTotalPrice"));
         base.OnModelCreating(modelBuilder);
         //modelBuilder.Entity<IdentityUserLogin<int>>(entity =>
         //{
@@ -29,7 +27,6 @@ public class BaseContext : IdentityDbContext<AppUser, AppRole, int>
         //{
         //    entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
         //});
-
     }
     public DbSet<About> Abouts { get; set; }
     public DbSet<Category> Categories { get; set; }

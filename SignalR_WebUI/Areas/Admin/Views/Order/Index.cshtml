@@ -41,7 +41,7 @@
                                     <td>@item.restaurantTableName</td>
                                     <td>@item.description</td>
                                     <td>@item.date.ToString("dd MMMM yyyy HH:mm", System.Globalization.CultureInfo.GetCultureInfo("Tr-tr"))</td>
-                                    <td>@item.totalPrice</td>
+                                    <td>@item.totalPrice ₺</td>
                                     <td>@(item.status ? "Aktif" : "Ödeme Alındı")</td>
                                     <td><a href="/Admin/OrderDetail/Detail/@item.id" class="btn btn-outline-warning btn-round">Siparişi Gör</a></td>
                                     <td><a href="/Admin/Order/DeleteOrder/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>

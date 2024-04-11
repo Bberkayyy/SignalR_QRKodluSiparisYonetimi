@@ -79,4 +79,16 @@ public class OrderDetailsController : ControllerBase
         GetOrderDetailResponseDto getOrderDetail = _mapper.Map<GetOrderDetailResponseDto>(value);
         return Ok(getOrderDetail);
     }
+    [HttpGet("decreaseproductcount")]
+    public IActionResult DecreaseProductCount(int id)
+    {
+        _orderDetailService.TDecreaseProductCount(id);
+        return Ok("Ürün sayısı azaltıldı.");
+    }
+    [HttpGet("increaseproductcount")]
+    public IActionResult InreaseProductCount(int id)
+    {
+        _orderDetailService.TIncreaseProductCount(id);
+        return Ok("Ürün sayısı arttırıldı.");
+    }
 }

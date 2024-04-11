@@ -13,4 +13,6 @@ public interface IOrderDetailDal : IGenericDal<OrderDetail>
     OrderDetail GetOrderDetailWithRelationships(int id);
     OrderDetail GetOrderDetailWithRelationshipsByOrderId(int orderId);
     IList<OrderDetail> GetAllOrderDetailWithRelationshipsByOrderId(int orderId);
+    void IncreaseProductCount(int id);
+    void DecreaseProductCount(int id);
 }
