@@ -29,7 +29,7 @@
                                 <th scope="col">Sipariş Durumu</th>
                                 <th scope="col">Sipariş Detayı</th>
                                 <th scope="col">Sil</th>
-                                <th scope="col">Güncelle</th>
+                                <th scope="col">Ödeme Al</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,14 @@
                                     <td>@(item.status ? "Aktif" : "Ödeme Alındı")</td>
                                     <td><a href="/Admin/OrderDetail/Detail/@item.id" class="btn btn-outline-warning btn-round">Siparişi Gör</a></td>
                                     <td><a href="/Admin/Order/DeleteOrder/@item.id" class="btn btn-outline-danger btn-round">Sil</a></td>
-                                    <td><a href="/Admin/Order/UpdateOrder/@item.id" class="btn btn-outline-success btn-round">Güncelle</a></td>
+                                    @if (item.status)
+                                    {
+                                        <td><a href="/Admin/Order/ComplateOrder/@item.id" class="btn btn-outline-success btn-round">Ödeme Al</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/Admin/Order/ComplateOrder/@item.id" class="btn btn-outline-success btn-round disabled">Ödeme Al</a></td>
+                                    }
                                 </tr>
                             }
                         </tbody>

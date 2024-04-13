@@ -73,4 +73,10 @@ public class OrdersController : ControllerBase
         GetOrderWithRelationshipsByRestaurantTableNameResponseDto value = _mapper.Map<GetOrderWithRelationshipsByRestaurantTableNameResponseDto>(_orderService.TGetOrderWithRelationshipsByRestaurantTableName(name));
         return Ok(value);
     }
+    [HttpGet("changestatustofalse")]
+    public IActionResult ChangeStatusToFalse(int id)
+    {
+        _orderService.TChangeStatusToFalse(id);
+        return Ok("Sipariş durumu 'Ödeme Alındı.' olarak değiştirildi.");
+    }
 }

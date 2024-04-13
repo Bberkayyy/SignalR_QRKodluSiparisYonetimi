@@ -23,6 +23,12 @@ public class OrderManager : GenericManager<Order, IOrderDal>, IOrderService
         restaurantTable.Status = true;
         return base.TAdd(entity);
     }
+    public override Order TDelete(Order entity)
+    {
+        RestaurantTable restaurantTable = _restaurantTableDal.GetByFilter(x => x.Id == entity.RestaurantTableId);
+        restaurantTable.Status = false;
+        return base.TDelete(entity);
+    }
     public Order TGetOrderWithRelationshipsByRestaurantTableName(string name)
     {
         return _entityDal.GetOrderWithRelationshipsByRestaurantTableName(name);

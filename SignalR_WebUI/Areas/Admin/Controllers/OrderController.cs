@@ -88,6 +88,15 @@ public class OrderController : Controller
             return RedirectToAction("Index", "Order", new { area = "Admin" });
         return View();
     }
+    [Route("ComplateOrder/{id}")]
+    public async Task<IActionResult> ChangeStatusToFalse(int id)
+    {
+        HttpClient client = _httpClientFactory.CreateClient();
+        HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/Orders/changestatustofalse?id=" + id);
+        if (responseMessage.IsSuccessStatusCode)
+            return RedirectToAction("Index", "Order", new { area = "Admin" });
+        return View();
+    }
     private async Task<IList<SelectListItem>> GetRestaurantTableList()
     {
         HttpClient client = _httpClientFactory.CreateClient();
