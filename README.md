@@ -25,6 +25,8 @@ Ayrıca, restoran içerisinde hangi masaların dolu ve boş olduğu da sistem ü
 ![ÖndeÇıkanÜrünlerVeİndirimler](https://github.com/user-attachments/assets/51931504-a453-463e-95ec-2b43e137989a)
 ![BizeUlaşın](https://github.com/user-attachments/assets/4b82b76d-07fb-4ae0-83f8-ebe1bb329ae2)
 ![BizimİçinNeDediler](https://github.com/user-attachments/assets/349ffc63-ed3f-4138-8d45-cd8ef72df28c)
+![Menu](https://github.com/user-attachments/assets/e7c3fa0f-d5de-44ee-a442-bb3d00acc5f3)
+![Sepet](https://github.com/user-attachments/assets/55a6c73b-7556-4a73-99a1-f07e88954a16)
 ![Adminİstatistikler](https://github.com/user-attachments/assets/40f88431-be92-4cef-ae1e-fa4343213b81)
 ![AdminMasaDurumları](https://github.com/user-attachments/assets/1f557597-732d-4d68-a850-13e88d04af99)
 ![AdminPanelÜrünler](https://github.com/user-attachments/assets/594caaba-26a3-4431-8bcc-fdb8e1444d6d)
