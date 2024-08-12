@@ -1,11 +1,24 @@
 <h1 align="center">SignalR Restoran Yönetim & Rezervasyon Projesi</h1>
 
 ## Proje Hakkında
-.Net Core 8.0, .Net Core Api, SignalR, N Tiear Architecture, Repository Design Pattern, MSSQL, Entity Framework Core, LINQ, HTML, CSS, Bootstrap, Javascript, Ajax, Dto Layer, Rezervasyon İşlemleri, Mail Gönderme İşlemleri, QRCode İşlemleri, Real-Time Mesajlaşma, Real-Time İstatistik, Real-Time Bildirim, Swagger
-
 Projenin temel amacı, restoran işletmelerinin yönetimini modernize ederek, kullanıcıların web sitesi arayüzü üzerinden restoran hakkında bilgi alabilmelerini sağlamak ve rezervasyon yapmalarına imkan tanımaktır. Ayrıca, kullanıcılar admin paneline öneri, talep, şikayet gibi konularda mesaj gönderebilirler. Bu mesajlar, SignalR teknolojisi kullanılarak anlık olarak dashboard üzerinde görüntülenebilir. Admin kullanıcısı, rezervasyon mesajlarını ve bildirimleri anlık olarak takip edebilir, böylece hızlı ve etkili bir iletişim sağlanır.
 
 Ayrıca, restoran içerisinde hangi masaların dolu ve boş olduğu da sistem üzerinden görülebilir. Bu özellik, restoranın işleyişini daha verimli hale getirir ve masaların daha etkin bir şekilde yönetilmesini sağlar. Admin panelinde bu bilgilerin anlık olarak güncellendiği ve görsel olarak kolayca takip edilebildiği bir dashboard bulunmaktadır.
+
+## Kulanılan Teknolojiler
+<ul>
+  <li>Asp.Net Core 8.0</li>
+  <li>WebApi</li>
+  <li>MVC</li>
+  <li>Entity Framework Core</li>
+  <li>MSSQL</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Bootstrap</li>
+  <li>JavaScript</li>
+  <li>SignalR</li>
+  <li>Ajax</li>
+</ul>
 
 ## Görseller
 ![MainPage](https://github.com/user-attachments/assets/0acac353-3d52-40b5-9031-b9520fef62dd)
