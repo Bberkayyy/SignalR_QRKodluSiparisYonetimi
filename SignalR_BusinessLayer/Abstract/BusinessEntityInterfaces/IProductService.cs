@@ -11,4 +11,5 @@ public interface IProductService : IGenericService<Product>
 {
     IList<Product> TGetAllProductsWithCategories();
     Product TGetProductWithCategory(int id);
+    IList<Product> TGetLast9ProductWithCategories();
 }

@@ -23,6 +23,12 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
         return products;
     }
 
+    public IList<Product> GetLast9ProductWithCategories()
+    {
+        IList<Product> products = GetAllProductsWithCategories().OrderByDescending(x => x.Id).Take(9).ToList();
+        return products;
+    }
+
     public Product GetProductWithCategory(int id)
     {
         Product product = GetByFilter(x => x.Id == id, x => x.Include(x => x.Category));

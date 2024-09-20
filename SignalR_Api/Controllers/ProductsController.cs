@@ -30,6 +30,12 @@ public class ProductsController : ControllerBase
         IList<GetAllProductWithCategoryResponseDto> values = _mapper.Map<IList<GetAllProductWithCategoryResponseDto>>(_productService.TGetAllProductsWithCategories());
         return Ok(values);
     }
+    [HttpGet("getlast9withcategory")]
+    public IActionResult GetLast9WithCategory()
+    {
+        IList<GetLast9ProductWithCategoryResponseDto> values = _mapper.Map<IList<GetLast9ProductWithCategoryResponseDto>>(_productService.TGetLast9ProductWithCategories());
+        return Ok(values);
+    }
     [HttpGet("getwithcategory/{id}")]
     public IActionResult GetProductWithCategory(int id)
     {

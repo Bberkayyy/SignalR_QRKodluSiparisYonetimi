@@ -25,4 +25,9 @@ public class ProductManager : GenericManager<Product, IProductDal>, IProductServ
     {
         return _entityDal.GetAllProductsWithCategories();
     }
+
+    public IList<Product> TGetLast9ProductWithCategories()
+    {
+        return _entityDal.GetLast9ProductWithCategories();
+    }
 }

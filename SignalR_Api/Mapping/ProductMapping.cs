@@ -16,5 +16,6 @@ public class ProductMapping : Profile
         CreateMap<Product, UpdatedProductResponseDto>().ReverseMap();
         CreateMap<Product, GetAllProductWithCategoryResponseDto>().ForMember(x => x.CategoryName, opt => opt.MapFrom(x => x.Category.Name)).ReverseMap();
         CreateMap<Product, GetProductWithCategoryResponseDto>().ForMember(x => x.CategoryName, opt => opt.MapFrom(x => x.Category.Name)).ReverseMap();
+        CreateMap<Product, GetLast9ProductWithCategoryResponseDto>().ForMember(x => x.CategoryName, opt => opt.MapFrom(x => x.Category.Name)).ReverseMap();
     }
 }

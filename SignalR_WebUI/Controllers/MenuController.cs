@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using SignalR_WebUI.Dtos.CartDtos;
+using SignalR_WebUI.Dtos.CategoryDtos;
 using SignalR_WebUI.Dtos.ProductDtos;
 using System.Text;
 
