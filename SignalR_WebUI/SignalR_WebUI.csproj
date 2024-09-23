@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SignalR_DataAccessLAyer\SignalR_DataAccessLayer.csproj" />
+    <ProjectReference Include="..\SignalR_DtoLayer\SignalR_DtoLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
