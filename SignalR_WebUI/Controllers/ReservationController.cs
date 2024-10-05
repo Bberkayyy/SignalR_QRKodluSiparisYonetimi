@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SignalR_WebUI.Dtos.ReservationDtos;
+using SignalR_WebUI.Dtos.ValidationErrorDtos;
 using System.Text;
 
 namespace SignalR_WebUI.Controllers;
@@ -30,6 +31,16 @@ public class ReservationController : Controller
         {
             return RedirectToAction("Index", "Default");
         }
-        return View();
+        else
+        {
+            ModelState.Clear();
+            var errorContent = await responseMessage.Content.ReadAsStringAsync();
+            List<ResultValidationErrorDto>? validationErrors = JsonConvert.DeserializeObject<List<ResultValidationErrorDto>>(errorContent);
+            foreach (var error in validationErrors)
+            {
+                ModelState.AddModelError(error.propertyName, error.errorMessage);
+            }
+            return View("Index", createReservationDto);
+        }
     }
 }

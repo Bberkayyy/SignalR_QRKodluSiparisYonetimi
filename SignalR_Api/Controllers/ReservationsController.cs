@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 using SignalR_DtoLayer.ReservationDtos;
@@ -12,11 +14,13 @@ public class ReservationsController : ControllerBase
 {
     private readonly IReservationService _reservationService;
     private readonly IMapper _mapper;
+    private readonly IValidator<CreateReservationRequestDto> _validator;
 
-    public ReservationsController(IReservationService ReservationService, IMapper mapper)
+    public ReservationsController(IReservationService ReservationService, IMapper mapper, IValidator<CreateReservationRequestDto> validator)
     {
         _reservationService = ReservationService;
         _mapper = mapper;
+        _validator = validator;
     }
     [HttpGet]
     public IActionResult GetAll()
@@ -27,6 +31,17 @@ public class ReservationsController : ControllerBase
     [HttpPost]
     public IActionResult Create(CreateReservationRequestDto createReservationRequestDto)
     {
+        ValidationResult validationResult = _validator.Validate(createReservationRequestDto);
+        if (!validationResult.IsValid)
+        {
+            //List<string> errorMessages = new();
+            //foreach (var item in validationResult.Errors)
+            //{
+            //    errorMessages.Add(item.ErrorMessage);
+            //}
+            return BadRequest(validationResult.Errors);
+        }
+
         Reservation mappedReservation = _mapper.Map<Reservation>(createReservationRequestDto);
         Reservation value = _reservationService.TAdd(mappedReservation);
         CreatedReservationResponseDto createdReservation = _mapper.Map<CreatedReservationResponseDto>(value);

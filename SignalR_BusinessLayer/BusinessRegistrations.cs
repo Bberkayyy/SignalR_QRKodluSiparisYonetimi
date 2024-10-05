@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using SignalR_BusinessLayer.Abstract.BusinessEntityInterfaces;
 using SignalR_BusinessLayer.Abstract.BusinessInterfaces;
 using SignalR_BusinessLayer.Concrete;
+using SignalR_BusinessLayer.ValidationRules.ReservationValidations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,8 @@ public static class BusinessRegistrations
         services.AddScoped<IMessageService, MessageManager>();
 
         services.AddScoped<IStatisticService, StatisticManager>();
+
+        services.AddValidatorsFromAssemblyContaining<CreateReservationRules>();
         return services;
     }
 }
