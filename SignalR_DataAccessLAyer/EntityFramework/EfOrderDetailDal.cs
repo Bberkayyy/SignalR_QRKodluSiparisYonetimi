@@ -17,6 +17,13 @@ public class EfOrderDetailDal : GenericRepository<OrderDetail>, IOrderDetailDal
     {
     }
 
+    public IList<OrderDetail> AddRange(IList<OrderDetail> entityList)
+    {
+        _context.OrderDetails.AddRange(entityList);
+        _context.SaveChanges();
+        return entityList;
+    }
+
     public void DecreaseProductCount(int id)
     {
         OrderDetail value = GetByFilter(x => x.Id == id);

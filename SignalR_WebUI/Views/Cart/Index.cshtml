@@ -92,6 +92,17 @@
                             <h5><span id="totalAmountWithKdv">@cartTotalPriceWithTax</span> ₺</h5>
                         </div>
                         <br />
+                        <form method="post" id="cartProducts" action="/Cart/ComplateOrder/">
+                            <input type="hidden" name="restaurantTableId" value="@ViewBag.restaurantTableId" readonly/>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <input type="hidden" name="cartProducts[@i].Id" value="@Model[i].id" readonly />
+                                <input type="hidden" name="cartProducts[@i].ProductName" value="@Model[i].productName" readonly />
+                                <input type="hidden" name="cartProducts[@i].ProductCount" value="@Model[i].productCount" readonly />
+                                <input type="hidden" name="cartProducts[@i].ProductPrice" value="@Model[i].productPrice" readonly />
+                                <input type="hidden" name="cartProducts[@i].TotalAmount" value="@Model[i].totalAmount" readonly />
+                            }
+                        </form>
                         <button id="btnChecked" class="btn btn-block btn-success font-weight-bold my-3">Siparişi Tamamla</button>
                     </div>
                 </div>
@@ -102,6 +113,12 @@
     @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
 
     @await Component.InvokeAsync("_UILayoutScriptsComponentPartial")
+
+    <script>
+        document.getElementById("btnChecked").addEventListener("click", function () {
+            document.getElementById("cartProducts").submit();
+        });
+    </script>
 
 </body>
 

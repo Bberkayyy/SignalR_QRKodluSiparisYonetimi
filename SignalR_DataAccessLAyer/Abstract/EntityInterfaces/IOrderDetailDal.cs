@@ -9,6 +9,7 @@ namespace SignalR_DataAccessLayer.Abstract.EntityInterfaces;
 
 public interface IOrderDetailDal : IGenericDal<OrderDetail>
 {
+    IList<OrderDetail> AddRange(IList<OrderDetail> entityList);
     IList<OrderDetail> GetAllOrderDetailsWithRelationships();
     OrderDetail GetOrderDetailWithRelationships(int id);
     OrderDetail GetOrderDetailWithRelationshipsByOrderId(int orderId);

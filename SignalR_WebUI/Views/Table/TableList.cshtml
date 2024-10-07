@@ -1,0 +1,104 @@
+﻿@model IList<ResultRestaurantTableDto>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_UILayoutHeaderComponentPartial")
+<style>
+    .widget {
+        width: 200px;
+        height: 100px;
+        background-color: #2ecc71;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .widget-icon {
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+        .widget-icon i {
+            font-size: 24px;
+            color: #2ecc71;
+        }
+
+    .widget-text {
+        margin-left: 20px;
+    }
+
+        .widget-text h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .widget-text p {
+            margin: 0;
+            font-size: 14px;
+        }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<body class="sub_page">
+
+    @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
+    </div>
+
+    <br />
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-dark mb-30">
+                    <a class=" breadcrumb-item text-white" href="/Default/Index/">Ana Sayfa</a>
+                    <span class="breadcrumb-item active">Masalar</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-2 mb-3">
+                    <div class="widget" style="@(item.status ? "background-color:#FF6666" : "")">
+                        <div class="widget-icon">
+                            @if (item.status)
+                            {
+                                <i class="fas fa-chair" style="color:#FF6666"></i>
+                            }
+                            else
+                            {
+                                <a href="/Menu/Index/@item.id">
+                                    <i class="fas fa-chair"></i>
+                                </a>
+                            }
+
+                        </div>
+                        <div class="widget-text">
+                            <h3>@item.name</h3>
+                            <p>@(item.status ? "Dolu" : "Boş")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
+
+    @await Component.InvokeAsync("_UILayoutScriptsComponentPartial")
+</body>
+
+</html>

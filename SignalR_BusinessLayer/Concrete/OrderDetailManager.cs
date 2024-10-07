@@ -19,6 +19,25 @@ public class OrderDetailManager : GenericManager<OrderDetail, IOrderDetailDal>, 
         _orderDal = orderDal;
         _productDal = productDal;
     }
+
+    public IList<OrderDetail> TAddRange(IList<OrderDetail> entityList)
+    {
+        Order order = _orderDal.GetByFilter(x => x.Id == entityList.First().OrderId);
+        List<Product> products = new();
+        foreach (OrderDetail item in entityList)
+        {
+            Product product = _productDal.GetByFilter(x => x.Id == item.ProductId);
+            products.Add(product);
+        }
+        foreach (OrderDetail entity in entityList)
+        {
+            Product? product = products.FirstOrDefault(x => x.Id == entity.ProductId);
+            entity.UnitPrice = product.Price;
+            entity.TotalPrice = entity.ProductCount * entity.UnitPrice;
+            order.TotalPrice += entity.TotalPrice;
+        }
+        return _entityDal.AddRange(entityList);
+    }
     public override OrderDetail TAdd(OrderDetail entity)
     {
         Product product = _productDal.GetByFilter(x => x.Id == entity.ProductId);

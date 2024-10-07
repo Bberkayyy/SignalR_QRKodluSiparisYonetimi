@@ -57,6 +57,14 @@ public class OrderDetailsController : ControllerBase
         CreatedOrderDetailResponseDto createdOrderDetail = _mapper.Map<CreatedOrderDetailResponseDto>(value);
         return Created("", createdOrderDetail);
     }
+    [HttpPost("addlist")]
+    public IActionResult CreateRange(IList<CreateOrderDetailRequestDto> createOrderDetailRequestDtos)
+    {
+        IList<OrderDetail> mappedOrderDetails = _mapper.Map<IList<OrderDetail>>(createOrderDetailRequestDtos);
+        IList<OrderDetail> values = _orderDetailService.TAddRange(mappedOrderDetails);
+        IList<CreatedOrderDetailResponseDto> createdOrderDetails = _mapper.Map<IList<CreatedOrderDetailResponseDto>>(values);
+        return Created("", createdOrderDetails);
+    }
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {

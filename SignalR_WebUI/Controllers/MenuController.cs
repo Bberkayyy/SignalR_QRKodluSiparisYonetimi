@@ -19,8 +19,9 @@ public class MenuController : Controller
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int id)
     {
+        ViewBag.restaurantTableId = id;
         HttpClient client = _httpClientFactory.CreateClient();
         HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:20666/api/Products/getallwithcategory");
         if (responseMessage.IsSuccessStatusCode)
@@ -32,11 +33,9 @@ public class MenuController : Controller
         return View();
     }
     [HttpPost]
-    public async Task<IActionResult> AddToCart(int id)//CreateCartDto createCartDto)
+    public async Task<IActionResult> AddToCart([FromBody] CreateCartDto createCartDto)
     {
-        CreateCartDto createCartDto = new();
-        createCartDto.ProductId = id;
-        createCartDto.RestaurantTableId = 4;
+        //ajax ile gelen ProductId ve RestaurantTableId değerleri dto sınıfındaki aynı isimli property lere atanıyor.
         HttpClient client = _httpClientFactory.CreateClient();
         string jsonData = JsonConvert.SerializeObject(createCartDto);
         StringContent content = new(jsonData, Encoding.UTF8, "application/json");
